@@ -28,7 +28,6 @@ const useStyles = makeStyles(() => ({
 
 const Header = ({ step, stepTitle }) => {
 	const classes = useStyles();
-	console.log(stepTitle.split('<br/>'));
 	return (
 		<div className={classes.header}>
 			<span className={classes.stepNo}>{step}</span>
