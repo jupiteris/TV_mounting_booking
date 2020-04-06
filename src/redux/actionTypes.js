@@ -1,0 +1,8 @@
+export const SET_STEP = 'SET_STEP';
+export const INITIAL_BRACKET = 'INITIAL_BRACKET';
+export const SET_ADDICTIONAL_QUIZ = 'SET_ADDICTIONAL_QUIZ';
+export const SET_SIZE = 'SET_SIZE';
+export const FOOTER_VISIBLE = 'FOOTER_VISIBLE';
+export const SET_BRACKET = 'SET_BRACKET';
+export const BRACKETS_DISIBLE = 'BRACKETS_DISIBLE';
+export const SET_OTHER_HELP = 'SET_OTHER_HELP';

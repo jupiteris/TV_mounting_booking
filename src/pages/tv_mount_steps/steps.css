@@ -1,0 +1,19 @@
+@media (max-width: 758px) {
+	.makeStyles-steps-1 {
+		width: 100% !important;
+	}
+	.makeStyles-footer-3 {
+		width: 100% !important;
+	}
+	#helps-container {
+		height: 700px;
+	}
+	#last-page-container {
+		height: 700px;
+	}
+}
+
+.MuiTypography-root {
+	font-size: 11px !important;
+	font-weight: 600 !important;
+}
