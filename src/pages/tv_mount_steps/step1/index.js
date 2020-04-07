@@ -7,26 +7,26 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles(() => ({
 	sizeHeader: {
 		display: 'flex',
-		padding: '50px 20px 0px 20px',
+		padding: '45px 20px 2px 20px',
 		marginBottom: -20,
-		fontSize: 11,
+		fontSize: 10,
 		color: '#b7b7b7',
 		fontWeight: 500,
 	},
 	nameSide: {
-		width: '70%',
+		width: '64%',
 		marginLeft: '25px',
 	},
 	qtySide: {
-		width: '30%',
+		width: '36%',
 		textAlign: 'center',
 	},
 	footer: {
 		color: '#22d1c3',
-		fontWeight: 700,
+		fontWeight: 550,
 		display: 'flex',
 		justifyContent: 'center',
-		marginTop: 60,
+		marginTop: 90,
 	},
 }));
 

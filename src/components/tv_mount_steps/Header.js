@@ -7,19 +7,20 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'flex-start',
 		color: '#22d1c3',
+		marginLeft: 5,
 	},
 	stepNo: {
-		fontSize: 20,
-		fontWeight: 800,
+		fontSize: 18,
+		fontWeight: 550,
 	},
 	followIcon: {
-		fontSize: 16,
-		marginTop: 5,
+		fontSize: 17,
+		marginTop: 6,
 	},
 	stepTitle: {
-		fontSize: 20,
+		fontSize: 18,
 		color: '#7c7c7c',
-		fontWeight: 600,
+		fontWeight: 430,
 	},
 	textFilter: {
 		margin: 0,
@@ -34,9 +35,13 @@ const Header = ({ step, stepTitle }) => {
 			<ArrowForwardIcon className={classes.followIcon} />
 			&nbsp;&nbsp;
 			<span className={classes.stepTitle}>
-				{stepTitle.split('<br/>').map((i) => {
+				{stepTitle.split('<br/>').map((i, index) => {
 					return (
-						<p key={i} className={classes.textFilter}>
+						<p
+							key={i}
+							className={classes.textFilter}
+							style={{ marginTop: index === 1 && -5 }}
+						>
 							{i}
 						</p>
 					);

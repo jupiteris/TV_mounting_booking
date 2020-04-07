@@ -8,7 +8,7 @@ import moment from 'moment';
 
 const useStyles = makeStyles(() => ({
 	root: {
-		borderRadius: 20,
+		borderRadius: 15,
 		padding: 20,
 		backgroundColor: '#fff',
 	},
@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
 	detailDiv: {
 		display: 'flex',
 		justifyContent: 'space-between',
-		marginTop: 30,
+		marginTop: 10,
 		alignItems: 'center',
 	},
 	date: { fontSize: 12, fontWeight: 500 },
@@ -43,6 +43,9 @@ const useStyles = makeStyles(() => ({
 		width: '10%',
 		display: 'flex',
 		justifyContent: 'flex-end',
+		'& button': {
+			padding: 0,
+		},
 		'& svg': {
 			fontSize: 24,
 			padding: 5,

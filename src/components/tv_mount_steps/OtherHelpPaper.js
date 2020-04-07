@@ -9,12 +9,12 @@ import ExpandableTitle from './ExpandableTitle';
 
 const useStyles = makeStyles(() => ({
 	root: {
-		margin: '30px 0px',
+		margin: '25px 0px',
 	},
 	paper: {
 		marginTop: 10,
 		borderRadius: 20,
-		padding: '15px 20px',
+		padding: 17,
 		backgroundColor: '#fff',
 		opacity: 0.8,
 		'&:hover': {
@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
 		fontWeight: 500,
 		color: '#b7b7b7',
 		fontSize: 11,
-		padding: 5,
+		padding: 10,
 	},
 	button: {
 		display: 'flex',
@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
 	okBtn: {
 		minWidth: 30,
 		padding: 0,
-		borderRadius: 10,
+		borderRadius: 5,
 		color: '#7e7e7e',
 		fontSize: 9,
 		background: '#d2d0d8',

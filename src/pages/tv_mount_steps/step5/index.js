@@ -117,6 +117,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={first_name}
 							invalid={invalidObj.first_name}
 							handleChange={handleChange}
+							required
 						/>
 						<CustomizedTextField
 							label="Last Name"
@@ -124,6 +125,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={last_name}
 							invalid={invalidObj.last_name}
 							handleChange={handleChange}
+							required
 						/>
 						<CustomizedTextField
 							label="Phone"
@@ -131,6 +133,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={phone}
 							invalid={invalidObj.phone}
 							handleChange={handleChange}
+							required
 						/>
 						<CustomizedTextField
 							label="Email"
@@ -138,6 +141,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={email}
 							invalid={invalidObj.email}
 							handleChange={handleChange}
+							required
 						/>
 					</div>
 				)}
@@ -154,6 +158,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={address}
 							invalid={invalidObj.address}
 							handleChange={handleChange}
+							required
 						/>
 						<CustomizedTextField
 							label="City"
@@ -161,6 +166,7 @@ const Step5 = ({ currentStep, setStep }) => {
 							value={city}
 							invalid={invalidObj.city}
 							handleChange={handleChange}
+							required
 						/>
 						<CustomizedTextField
 							label="Zip Code"

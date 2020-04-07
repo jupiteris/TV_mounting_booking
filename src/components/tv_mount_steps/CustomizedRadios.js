@@ -52,10 +52,16 @@ const useStyles = makeStyles({
 	},
 	radiosGroup: {
 		flexDirection: 'row',
-		paddingTop: 15,
+		padding: '15px 0px',
 	},
 	radioWrap: {
 		margin: 0,
+		'& span': {
+			padding: 0,
+		},
+		'& .MuiTypography-body1': {
+			marginRight: 5,
+		},
 	},
 });
 
@@ -103,7 +109,7 @@ const CustomizedRadios = ({
 				label={options.yesOption}
 				labelPlacement="start"
 				className={classes.radioWrap}
-				style={{ width: '40%' }}
+				style={{ width: '33%' }}
 			/>
 			<FormControlLabel
 				value="no"
@@ -111,7 +117,7 @@ const CustomizedRadios = ({
 				labelPlacement="start"
 				label={options.noOption}
 				className={classes.radioWrap}
-				style={{ width: '60%' }}
+				style={{ width: '67%' }}
 			/>
 		</RadioGroup>
 	);

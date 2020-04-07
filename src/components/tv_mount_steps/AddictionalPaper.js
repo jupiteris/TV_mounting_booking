@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 20,
-		padding: '15px 20px',
+		padding: 17,
 		backgroundColor: '#fff',
 		margin: '30px 0px',
 		opacity: 0.8,
@@ -20,8 +20,9 @@ const useStyles = makeStyles(() => ({
 	},
 	title: {
 		width: '100%',
-		fontWeight: 800,
-		paddingBottom: 15,
+		fontWeight: 700,
+		paddingBottom: 5,
+		fontSize: 13,
 	},
 	explain: {
 		width: '100%',

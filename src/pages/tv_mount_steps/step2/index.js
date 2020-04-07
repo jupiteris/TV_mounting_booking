@@ -7,17 +7,17 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles(() => ({
 	sizeHeader: {
 		display: 'flex',
-		padding: '50px 20px 0px 20px',
+		padding: '45px 20px 2px 20px',
 		marginBottom: -20,
-		fontSize: 11,
+		fontSize: 10,
 		color: '#b7b7b7',
 		fontWeight: 500,
 	},
 	nameSide: {
-		width: '70%',
+		width: '64%',
 	},
 	qtySide: {
-		width: '30%',
+		width: '36%',
 		textAlign: 'center',
 	},
 }));
@@ -29,7 +29,7 @@ const Step2 = ({ brackets, sizes }) => {
 		<>
 			<Header
 				step="2"
-				stepTitle={'Please choose the brackets of your ' + sizeName}
+				stepTitle={'Please choose the brackets <br/>of your ' + sizeName}
 			/>
 			<div className={classes.sizeHeader}>
 				<div className={classes.nameSide}>TYPE OF BRACKET</div>

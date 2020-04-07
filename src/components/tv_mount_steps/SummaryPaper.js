@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles(() => ({
 	root: {
 		borderRadius: 20,
-		padding: 20,
+		padding: 15,
 		backgroundColor: '#fff',
 		marginTop: 30,
 	},
@@ -41,7 +41,7 @@ const useStyles = makeStyles(() => ({
 	},
 	seviceIcon: {
 		'& svg': {
-			fontSize: 24,
+			fontSize: 18,
 			color: '#22d1c3',
 		},
 		width: '10%',
@@ -49,6 +49,7 @@ const useStyles = makeStyles(() => ({
 	serviceName: {
 		width: '40%',
 		fontWeight: 500,
+		fontSize: 14,
 	},
 	servicePrice: {
 		width: '40%',
@@ -59,18 +60,21 @@ const useStyles = makeStyles(() => ({
 		width: '10%',
 		display: 'flex',
 		justifyContent: 'flex-end',
-		'& svg': {
-			fontSize: 24,
-			padding: 5,
-			borderRadius: 20,
-			border: '1px solid #ebebeb',
+		'& button': {
+			padding: 0,
+			'& svg': {
+				fontSize: 24,
+				padding: 5,
+				borderRadius: 20,
+				border: '1px solid #ebebeb',
+			},
 		},
 	},
 	priceBoard: {
-		width: '40%',
+		width: '45%',
 		border: '2px solid #ebebeb',
 		textAlign: 'center',
-		padding: 8,
+		padding: 5,
 		fontSize: 11,
 		borderRadius: 5,
 		fontWeight: 500,

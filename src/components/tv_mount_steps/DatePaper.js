@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 		width: '25%',
 		background: '#f2f2f2',
 		color: '#030303',
-		fontSize: 11,
+		fontSize: 9,
 		fontWeight: 500,
 	},
 	line: {
@@ -43,6 +43,8 @@ const useStyles = makeStyles(() => ({
 		textAlign: 'center',
 		'& span': {
 			padding: '20px 0px',
+			fontSize: 14,
+			fontWeight: 500,
 		},
 	},
 }));

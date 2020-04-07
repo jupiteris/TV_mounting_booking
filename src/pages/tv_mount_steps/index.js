@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 	},
 	step: {
-		width: '90%',
+		width: '80%',
 		paddingTop: 30,
 	},
 	footer: {

@@ -20,7 +20,8 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		width: '60%',
+		width: '64%',
+		fontSize: 14,
 		fontWeight: 430,
 		color: '#030303',
 	},
@@ -31,12 +32,15 @@ const useStyles = makeStyles(() => ({
 		marginLeft: 10,
 	},
 	qtyDiv: {
-		width: '40%',
+		width: '36%',
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		fontWeight: 800,
+		fontWeight: 1000,
 		fontSize: 18,
+		'& button': {
+			padding: 0,
+		},
 	},
 	addIcon: {
 		color: '#22d1c3',
@@ -91,7 +95,7 @@ const ExternalCard = ({ externalObj, mainId, setOtherHelp }) => {
 
 	return (
 		<div className={classes.card}>
-			<div className={classes.nameDiv}>
+			<div className={classes.nameDiv} style={{ width: !checked && '100%' }}>
 				<Checkbox
 					checked={checked}
 					onChange={handleChange}

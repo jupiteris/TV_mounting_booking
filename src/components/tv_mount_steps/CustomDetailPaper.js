@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(() => ({
 	root: {
 		borderRadius: 20,
-		padding: 20,
+		padding: 15,
 		backgroundColor: '#fff',
 		marginTop: 30,
 	},
@@ -51,6 +51,7 @@ const useStyles = makeStyles(() => ({
 	},
 	phoneNumber: {
 		fontWeight: 500,
+		fontSize: 12,
 	},
 }));
 

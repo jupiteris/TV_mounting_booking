@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
 	root: {
 		borderRadius: 20,
-		padding: 20,
+		padding: 15,
 		backgroundColor: '#fff',
 	},
 	title: {
@@ -32,14 +32,20 @@ const useStyles = makeStyles(() => ({
 	},
 	coupon: {
 		background: '#f2f2f2',
-		padding: 10,
-		borderRadius: 10,
+		borderRadius: 5,
+		fontSize: 12,
 		textAlign: 'center',
 		marginTop: 10,
 		fontWeight: 500,
 	},
-	btnDiv: { padding: 5, display: 'flex', justifyContent: 'center' },
-	btn: { width: '40%', background: '#22d1c3', color: 'white', fontWeight: 500 },
+	btnDiv: { padding: 7, display: 'flex', justifyContent: 'center' },
+	btn: {
+		width: '33%',
+		background: '#22d1c3',
+		color: 'white',
+		fontWeight: 500,
+		fontSize: 9,
+	},
 }));
 
 const CouponPaper = ({ width }) => {

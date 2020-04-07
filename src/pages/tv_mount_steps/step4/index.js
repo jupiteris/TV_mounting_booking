@@ -37,7 +37,7 @@ const Step4 = ({ otherHelps }) => {
 
 	return (
 		<>
-			<Header step="4" stepTitle="What else can we help you set up" />
+			<Header step="4" stepTitle="What else can we help <br/>you set up" />
 			<div className={classes.helps} id="helps-container">
 				{otherHelps.map((help) => (
 					<OtherHelpPaper key={help.id} helpObj={help} />

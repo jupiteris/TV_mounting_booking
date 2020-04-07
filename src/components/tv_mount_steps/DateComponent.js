@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
 		width: '90%',
 		border: '2px solid #ebebeb',
 		textAlign: 'center',
-		padding: 8,
+		padding: 0,
 		fontSize: 11,
 		borderRadius: 5,
 		fontWeight: 500,
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 	dateBlock: {
-		fontSize: 9,
+		fontSize: 8,
 		fontWeight: 600,
 	},
 }));

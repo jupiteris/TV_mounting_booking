@@ -13,27 +13,28 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: 20,
-		padding: '15px 20px',
+		borderRadius: 15,
+		padding: 17,
 		backgroundColor: '#fff',
-		margin: '30px 0px',
-		opacity: 0.8,
-		'&:hover': {
-			opacity: 1,
-		},
+		margin: '26px 0px',
+		opacity: 1,
 	},
 	nameDiv: {
-		width: '70%',
-		fontWeight: 430,
+		width: '64%',
+		fontWeight: 600,
+		fontSize: 14,
 		color: '#030303',
 	},
 	qtyDiv: {
-		width: '30%',
+		width: '36%',
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		fontWeight: 800,
+		fontWeight: 1000,
 		fontSize: 18,
+		'& button': {
+			padding: 0,
+		},
 	},
 	switchDiv: {
 		width: '30%',
@@ -45,9 +46,11 @@ const useStyles = makeStyles(() => ({
 	},
 	addIcon: {
 		color: '#22d1c3',
+		fontSize: 30,
 	},
 	removeIcon: {
 		color: '#e7e7e7',
+		fontSize: 30,
 	},
 }));
 
@@ -79,14 +82,7 @@ const BracketPaper = ({
 
 	return (
 		<>
-			<Paper
-				elevation={0}
-				style={{
-					backgroundColor: paperState.qty ? '#38bfe8' : '#fff',
-				}}
-				className={classes.root}
-				onClick={handleSelect}
-			>
+			<Paper elevation={0} className={classes.root} onClick={handleSelect}>
 				<div className={classes.nameDiv}>{paperState.name}</div>
 				{paperState.qty !== undefined ? (
 					<div className={classes.qtyDiv}>

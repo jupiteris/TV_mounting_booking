@@ -8,12 +8,12 @@ const useStyles = makeStyles(() => ({
 	title: {
 		fontWeight: 500,
 		color: '#b7b7b7',
-		fontSize: 11,
+		fontSize: 9,
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: '0px 20px',
-		marginTop: 20,
+		marginTop: 30,
 	},
 	expand: {
 		padding: 0,
