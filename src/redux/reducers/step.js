@@ -4,24 +4,32 @@ import {
 	FOOTER_VISIBLE,
 	INITIAL_BRACKET,
 	SET_BRACKET,
-	BRACKETS_DISIBLE,
 	SET_ADDICTIONAL_QUIZ,
 	SET_OTHER_HELP,
+	SET_SIZE_INDEX,
+	SET_BRACKETS_PRICE,
+	SET_ADDICTIONAL_PRICE,
+	SET_DATE_INDEX,
+	SET_DATE_BLOCK_INDEX,
+	SET_TIME_INDEX,
+	SET_EXPAND_MTH,
+	// SET_BOOKING_TIME,
 } from '../actionTypes';
 
 const initialState = {
 	currentStep: 0,
+	sizeIndex: 0,
 	sizes: [
-		{ id: 1, name: 'under 31”', qty: 0, selected: false, price: 69 },
-		{ id: 2, name: '31-60”', qty: 0, selected: false, price: 99 },
-		{ id: 3, name: '61-80”', qty: 0, selected: false, price: 139 },
-		{ id: 4, name: 'over 80”', qty: 0, selected: false, price: 159 },
+		{ id: 1, name: 'under 31”', qty: 0, price: 69, bracketsPrice: 0 },
+		{ id: 2, name: '31-60”', qty: 0, price: 99, bracketsPrice: 0 },
+		{ id: 3, name: '61-80”', qty: 0, price: 139, bracketsPrice: 0 },
+		{ id: 4, name: 'over 80”', qty: 0, price: 159, bracketsPrice: 0 },
 	],
 	brackets: [
-		{ id: 1, name: 'Fixed', qty: 0, selected: false, price: 28 },
-		{ id: 2, name: 'Tilt', qty: 0, selected: false, price: 29 },
-		{ id: 3, name: 'Full Motion', qty: 0, selected: false, price: 35 },
-		{ id: 4, name: 'I have my own bracket', selected: false, price: 0 },
+		{ id: 1, name: 'Fixed', qtys: [], price: 28 },
+		{ id: 2, name: 'Tilt', qtys: [], price: 29 },
+		{ id: 3, name: 'Full Motion', qtys: [], price: 35 },
+		{ id: 4, name: 'I have my own bracket', selecteds: [], price: 0 },
 	],
 	addictionalQuizs: [
 		{
@@ -99,11 +107,14 @@ const initialState = {
 		},
 	],
 	sizePrice: 0,
-	bracketPrice: 0,
+	bracketsPrice: 0,
 	addictionalPrice: 0,
-	totalPrice: 0,
 	footerVisible: false,
-	bracketsDisible: false,
+	dateIndex: 0,
+	dateBlockIndex: {},
+	timeIndex: 0,
+	expandMth: false,
+	bookingTimes: [],
 };
 
 export default function (state = initialState, action) {
@@ -115,44 +126,117 @@ export default function (state = initialState, action) {
 			};
 		}
 		case SET_SIZE: {
-			const selectedSize = state.sizes.find(
-				(size) => size.id === action.payload.id
-			);
+			const id = action.payload.id;
+			const variant = action.payload.variant;
+			const price = action.payload.price;
 			return {
 				...state,
 				sizes: state.sizes.map((size) => {
-					if (size.id === action.payload.id)
+					if (size.id === id)
 						return {
 							...size,
-							qty: action.payload.qty,
-							selected: action.payload.qty ? true : false,
+							qty: size.qty + variant,
 						};
-					else return { ...size, selected: false, qty: 0 };
+					else return size;
 				}),
-				sizePrice: action.payload.qty * selectedSize.price,
+				sizePrice: state.sizePrice + variant * price,
 			};
 		}
-		case SET_BRACKET: {
-			const selectedBracket = state.brackets.find(
-				(bracket) => bracket.id === action.payload.id
-			);
+		case SET_SIZE_INDEX: {
+			return {
+				...state,
+				sizeIndex: action.payload,
+			};
+		}
+
+		case INITIAL_BRACKET: {
 			return {
 				...state,
 				brackets: state.brackets.map((bracket) => {
-					if (bracket.id === action.payload.id)
+					if (bracket.id !== 4)
 						return {
 							...bracket,
-							qty: action.payload.qty,
-							selected: action.payload.qty ? true : false,
+							qtys: bracket.qtys.map((ele) => {
+								if (ele.sizeId === action.payload) return { ...ele, qty: 0 };
+								else return ele;
+							}),
 						};
-					else
-						return {
-							...bracket,
-							selected: false,
-							qty: bracket.id !== 4 ? 0 : undefined,
-						};
+					else return bracket;
 				}),
-				bracketPrice: action.payload.qty * selectedBracket.price,
+			};
+		}
+		case SET_BRACKET: {
+			const sizeId = action.payload.sizeId;
+			const id = action.payload.id;
+			const variant = action.payload.variant;
+			const price = action.payload.price;
+			const checked = action.payload.checked;
+			return {
+				...state,
+				brackets: state.brackets.map((bracket) => {
+					if (bracket.id === id && bracket.id !== 4)
+						return {
+							...bracket,
+							qtys:
+								bracket.qtys.length &&
+								bracket.qtys.find((ele) => ele.sizeId === sizeId)
+									? bracket.qtys.map((ele) => {
+											if (ele.sizeId === sizeId)
+												return {
+													...ele,
+													qty: ele.qty + variant,
+												};
+											else return ele;
+									  })
+									: [...bracket.qtys, { sizeId: sizeId, qty: variant }],
+						};
+					else if (bracket.id === id && bracket.id === 4)
+						return {
+							...bracket,
+							selecteds:
+								//if certain size is exist, just update
+								bracket.selecteds.length &&
+								bracket.selecteds.find((ele) => ele.sizeId === sizeId)
+									? bracket.selecteds.map((ele) => {
+											if (ele.sizeId === sizeId)
+												return {
+													...ele,
+													selected: checked,
+												};
+											else return ele;
+									  })
+									: //if not exist, add
+									  [
+											...bracket.selecteds,
+											{ sizeId: sizeId, selected: checked },
+									  ],
+						};
+					else return bracket;
+				}),
+				sizes: state.sizes.map((size) => {
+					if (checked && size.id === sizeId)
+						return {
+							...size,
+							bracketsPrice: 0,
+						};
+					else if (
+						!checked &&
+						price &&
+						typeof variant !== undefined &&
+						size.id === sizeId
+					) {
+						return {
+							...size,
+							bracketsPrice: size.bracketsPrice + variant * price,
+						};
+					} else return size;
+				}),
+			};
+		}
+		case SET_BRACKETS_PRICE: {
+			return {
+				...state,
+				bracketsPrice: action.payload,
 			};
 		}
 		case SET_ADDICTIONAL_QUIZ: {
@@ -163,6 +247,12 @@ export default function (state = initialState, action) {
 						return { ...ele, selected: !ele.selected };
 					} else return ele;
 				}),
+			};
+		}
+		case SET_ADDICTIONAL_PRICE: {
+			return {
+				...state,
+				addictionalPrice: action.payload,
 			};
 		}
 		case SET_OTHER_HELP: {
@@ -186,29 +276,34 @@ export default function (state = initialState, action) {
 				}),
 			};
 		}
-		case INITIAL_BRACKET: {
-			return {
-				...state,
-				brackets: state.brackets.map((bracket) => {
-					return {
-						...bracket,
-						selected: false,
-						qty: bracket.id !== 4 ? 0 : undefined,
-					};
-				}),
-				bracketPrice: 0,
-			};
-		}
 		case FOOTER_VISIBLE: {
 			return {
 				...state,
 				footerVisible: action.payload,
 			};
 		}
-		case BRACKETS_DISIBLE: {
+		case SET_DATE_INDEX: {
 			return {
 				...state,
-				bracketsDisible: action.payload,
+				dateIndex: action.payload,
+			};
+		}
+		case SET_DATE_BLOCK_INDEX: {
+			return {
+				...state,
+				dateBlockIndex: action.payload,
+			};
+		}
+		case SET_TIME_INDEX: {
+			return {
+				...state,
+				timeIndex: action.payload,
+			};
+		}
+		case SET_EXPAND_MTH: {
+			return {
+				...state,
+				expandMth: action.payload,
 			};
 		}
 		default:

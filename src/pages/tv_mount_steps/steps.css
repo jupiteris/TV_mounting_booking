@@ -9,10 +9,19 @@
 		width: 100% !important;
 	}
 	#helps-container {
-		height: 650px;
+		height: 550px;
+	}
+	#form {
+		height: 550px;
 	}
 	#last-page-container {
-		height: 6500px;
+		height: 550px;
+	}
+	#dateBlock {
+		padding: 0px;
+	}
+	.makeStyles-bookingForm-277 {
+		height: 550px;
 	}
 }
 

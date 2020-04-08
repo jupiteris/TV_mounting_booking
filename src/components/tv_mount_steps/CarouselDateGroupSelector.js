@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import DateGroup from './DateGroup';
+import { setDateBlockIndex } from '../../redux/actions/actions';
+import { connect } from 'react-redux';
 
 const datesBlocks = [0, 1, 2, 3, 4, 5];
 
-const CarouselDateGroupSelector = () => {
-	const [selectedDatesBlock, setSelectedDatesBlock] = useState();
-	const handleChange = (e) => {
-		console.log('index', e.item.index);
-		console.log('current', e.item.current);
-		console.log('count', e.item.count);
-	};
+const CarouselDateGroupSelector = ({ dateBlockIndex }) => {
 	return (
 		<div className="upcomming-event-section" style={{ width: '70%' }}>
 			<OwlCarousel
@@ -23,14 +19,20 @@ const CarouselDateGroupSelector = () => {
 				dots={false}
 				center={true}
 				smartSpeed={1000}
-				onChange={handleChange}
+				startPosition={dateBlockIndex.blockIndex}
 			>
 				{datesBlocks.map((datesBlock) => (
-					<DateGroup key={datesBlock} datesBlock={datesBlock} />
+					<DateGroup key={datesBlock} datesBlockIndex={datesBlock} />
 				))}
 			</OwlCarousel>
 		</div>
 	);
 };
 
-export default CarouselDateGroupSelector;
+const mapStateToProps = (state) => ({
+	dateBlockIndex: state.step.dateBlockIndex,
+});
+
+export default connect(mapStateToProps, { setDateBlockIndex })(
+	CarouselDateGroupSelector
+);

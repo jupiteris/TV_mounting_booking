@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CarouselDateSelector from './CarouselDateSelector';
 import CarouselDateGroupSelector from './CarouselDateGroupSelector';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
 import TimeComponent from './TimeComponent';
+import { setTimeIndex, setExpandMth } from '../../redux/actions/actions';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -51,12 +53,10 @@ const useStyles = makeStyles(() => ({
 
 const times = [8, 10, 1, 3, 5, 7];
 
-const DatePaper = () => {
+const DatePaper = ({ expandMth, setTimeIndex, setExpandMth }) => {
 	const classes = useStyles();
-	const [selectedTime, setSelectedTime] = useState(0);
-	const [expandMth, setExpandMth] = useState(false);
 	const handleTime = (t) => {
-		setSelectedTime(t);
+		setTimeIndex(t);
 	};
 	const handleExpandDates = () => {
 		setExpandMth(!expandMth);
@@ -84,7 +84,6 @@ const DatePaper = () => {
 								key={time}
 								handleTime={handleTime}
 								startTime={time}
-								selectedTime={selectedTime}
 							/>
 						))}
 					</div>
@@ -94,4 +93,10 @@ const DatePaper = () => {
 	);
 };
 
-export default DatePaper;
+const mapStateToProps = (state) => ({
+	expandMth: state.step.expandMth,
+});
+
+export default connect(mapStateToProps, { setTimeIndex, setExpandMth })(
+	DatePaper
+);

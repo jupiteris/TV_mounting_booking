@@ -9,7 +9,7 @@ import CustomDetailPaper from '../../../components/tv_mount_steps/CustomDetailPa
 
 const useStyles = makeStyles(() => ({
 	lastStep: {
-		height: 550,
+		height: 600,
 		overflowY: 'auto',
 		'&::-webkit-scrollbar': {
 			display: 'none',
@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const Step7 = ({}) => {
+const Step7 = () => {
 	const classes = useStyles();
 	return (
 		<>

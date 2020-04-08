@@ -6,6 +6,7 @@ import Step4 from './step4';
 import Step5 from './step5';
 import Step6 from './step6';
 import Step7 from './step7';
+import Step8 from './step8';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../../components/tv_mount_steps/Footer';
 import { connect } from 'react-redux';
@@ -41,8 +42,9 @@ const StepPage = ({ currentStep }) => {
 				{currentStep === 4 && <Step5 />}
 				{currentStep === 5 && <Step6 />}
 				{currentStep === 6 && <Step7 />}
+				{currentStep === 7 && <Step8 />}
 			</div>
-			{currentStep !== 4 && (
+			{currentStep >= 0 && currentStep < 7 && (
 				<div className={classes.footer}>
 					<Footer />
 				</div>

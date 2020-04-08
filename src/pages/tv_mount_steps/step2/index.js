@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BracketPapter from '../../../components/tv_mount_steps/BracketPaper';
 import Header from '../../../components/tv_mount_steps/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import { setFooterVisible } from '../../../redux/actions/actions';
 
 const useStyles = makeStyles(() => ({
 	sizeHeader: {
@@ -22,9 +23,23 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const Step2 = ({ brackets, sizes }) => {
+const bracketSchemas = [1, 2, 3, 4];
+//step2 can include several inner steps according to the number of the selected size of the last step.
+const Step2 = ({ sizes, sizeIndex, brackets, setFooterVisible }) => {
 	const classes = useStyles();
-	const sizeName = sizes.find((size) => size.selected === true).name;
+	const selectedSizes = sizes.filter((size) => size.qty > 0);
+	//individual size information of the each inner step in the bracket step(step2)
+	const sizeName = selectedSizes[sizeIndex].name;
+	const sizeId = selectedSizes[sizeIndex].id;
+	const bracketsPrice = selectedSizes[sizeIndex].bracketsPrice;
+
+	useEffect(() => {
+		let bracketDisible = brackets[3].selecteds.find(
+			(ele) => ele.sizeId === sizeId
+		);
+		bracketDisible = bracketDisible && bracketDisible.selected;
+		setFooterVisible(bracketDisible || bracketsPrice);
+	}, [brackets, sizeId]);
 	return (
 		<>
 			<Header
@@ -35,16 +50,18 @@ const Step2 = ({ brackets, sizes }) => {
 				<div className={classes.nameSide}>TYPE OF BRACKET</div>
 				<div className={classes.qtySide}>QTY</div>
 			</div>
-			{brackets.map((bracket) => (
-				<BracketPapter id={bracket.id} key={bracket.id} />
+			{bracketSchemas.map((bracket) => (
+				<BracketPapter id={bracket} key={bracket} sizeId={sizeId} />
 			))}
 		</>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	brackets: state.step.brackets,
 	sizes: state.step.sizes,
+	sizeIndex: state.step.sizeIndex,
+	bracketsDisible: state.step.bracketsDisible,
+	brackets: state.step.brackets,
 });
 
-export default connect(mapStateToProps, {})(Step2);
+export default connect(mapStateToProps, { setFooterVisible })(Step2);

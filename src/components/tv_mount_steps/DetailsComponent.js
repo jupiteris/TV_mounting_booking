@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
 	detailPaper: {
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
 	},
 	closeButton: {
 		position: 'relative',
-		fontSize: 50,
+		fontSize: 40,
 		cursor: 'pointer',
 	},
 	list: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 	},
 	orderDetail: {
 		'& h1': {
-			fontSize: 24,
+			fontSize: 18,
 			fontWeight: 500,
 			fontStyle: 'normal',
 			fontStretch: 'normal',
@@ -27,10 +28,10 @@ const useStyles = makeStyles({
 			letterSpacing: -0.29,
 			color: '#46475c',
 			marginTop: 0,
-			marginBottom: 25,
+			marginBottom: 15,
 		},
 		'& h2': {
-			fontSize: 18,
+			fontSize: 14,
 			marginBottom: 0,
 			fontWeight: 400,
 			fontStyle: 'normal',
@@ -45,37 +46,49 @@ const useStyles = makeStyles({
 			margin: '2px 0px',
 			fontSize: 16,
 		},
+		borderTop: '1px dashed #ccc',
+		marginTop: 5,
+		paddingTop: 5,
 	},
 	serviceName: {
 		display: 'inline-block',
-		fontSize: 14,
+		fontSize: 12,
 		maxWidth: 200,
 	},
 	servicePrice: {
-		fontSize: 14,
+		fontSize: 12,
 		float: 'right',
 	},
+	deviceProperties: {
+		marginTop: 10,
+		'& div': {
+			fontSize: 12,
+			'& b': {
+				fontSize: 14,
+			},
+		},
+	},
 	myCartTotalPrice: {
-		paddingTop: 15,
-		marginTop: 15,
+		paddingTop: 5,
+		marginTop: 5,
 		borderTop: '1px solid #ccc',
 		'& span': {
-			fontSize: 18,
+			fontSize: 14,
 		},
 	},
 	noPayments: {
 		width: '100%',
-		margin: ' 30px 0px',
-		padding: '15px 0px',
+		margin: ' 10px 0px',
+		padding: '10px 0px',
 		borderRadius: 10,
 		backgroundColor: '#5ddaed4d',
-		fontSize: 16,
+		fontSize: 14,
 		fontWeight: 400,
 		textAlign: 'center',
 		color: '#414141',
 	},
 	requestSummeryRowHeader: {
-		fontSize: 14,
+		fontSize: 10,
 		fontWeight: 500,
 		fontStyle: 'normal',
 		fontstretch: 'normal',
@@ -84,7 +97,7 @@ const useStyles = makeStyles({
 		color: '#000',
 	},
 	requestSummeryRowsContainer: {
-		fontSize: 16,
+		fontSize: 12,
 		fontWeight: 400,
 		fontStyle: 'normal',
 		fontStretch: 'normal',
@@ -95,8 +108,14 @@ const useStyles = makeStyles({
 	},
 });
 
-const DetailsComponent = ({ toggleDrawer }) => {
+const DetailsComponent = ({ toggleDrawer, sizes, sizeIndex }) => {
 	const classes = useStyles();
+	const selectedSizes = sizes.filter((size) => size.qty > 0);
+	// const sizeName = selectedSizes[sizeIndex].name;
+	// const sizeQty = selectedSizes[sizeIndex].qty;
+	// const sizePrice = selectedSizes[sizeIndex].price;
+	// const sizeId = selectedSizes[sizeIndex].id;
+	// const bracketsPrice = selectedSizes[sizeIndex].bracketsPrice;
 	return (
 		<div className={classes.fullList} role="presentation">
 			<Paper elevation={0} className={classes.detailPaper}>
@@ -108,25 +127,31 @@ const DetailsComponent = ({ toggleDrawer }) => {
 					<h2>
 						<b>TV Mounting</b>
 					</h2>
-					<div className={classes.servicesAggregationDetailsWrapper}>
-						<h3>
-							<b>Over 81"</b>
-						</h3>
-						<div className={classes.servicesAggregationDetails}>
-							<div className={classes.aggregateService}>
-								<span className={classes.serviceName}>TV Mounting</span>
-								<span className={classes.servicePrice}>$159</span>
-							</div>
-						</div>
-						<div className={classes.deviceProperties}>
-							<div>
-								<div>
-									<b>Braket Type</b>
+					{selectedSizes.map((size) => (
+						<div className={classes.servicesAggregationDetailsWrapper}>
+							<h3>
+								<b>{size.name}</b>
+							</h3>
+							<div className={classes.servicesAggregationDetails}>
+								<div className={classes.aggregateService}>
+									<span className={classes.serviceName}>
+										TV Mounting ({size.qty} tv)
+									</span>
+									<span className={classes.servicePrice}>
+										${size.qty * size.price}
+									</span>
 								</div>
-								<div>Full motion</div>
+							</div>
+							<div className={classes.deviceProperties}>
+								<div>
+									<div>
+										<b>Braket Type</b>
+									</div>
+									<div>Full motion</div>
+								</div>
 							</div>
 						</div>
-					</div>
+					))}
 					<div className={classes.myCartTotalPrice}>
 						<div>
 							<span>Total</span>
@@ -157,4 +182,9 @@ const DetailsComponent = ({ toggleDrawer }) => {
 	);
 };
 
-export default DetailsComponent;
+const mapStateToProps = (state) => ({
+	sizes: state.step.sizes,
+	sizeIndex: state.step.sizeIndex,
+});
+
+export default connect(mapStateToProps, {})(DetailsComponent);

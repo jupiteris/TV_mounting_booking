@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import { connect } from 'react-redux';
-import { setSize, setFooterVisible } from '../../redux/actions/actions';
+import { setSize } from '../../redux/actions/actions';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -45,23 +45,19 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const SizePaper = ({ id, sizes, setSize, setFooterVisible }) => {
+const SizePaper = ({ id, sizes, setSize }) => {
 	const classes = useStyles();
 	const [paperState, setPaperState] = useState({});
 	useEffect(() => {
 		setPaperState(sizes.find((size) => size.id === id));
-		const visiable = sizes.find((size) => size.selected === true)
-			? true
-			: false;
-		setFooterVisible(visiable);
 	}, [sizes, id]);
 	const increaseSize = () => {
 		if (paperState.qty >= 25) return;
-		setSize({ id: paperState.id, qty: paperState.qty + 1 });
+		setSize({ id: paperState.id, variant: 1, price: paperState.price });
 	};
 	const decreaseSize = () => {
 		if (paperState.qty <= 0) return;
-		setSize({ id: paperState.id, qty: paperState.qty - 1 });
+		setSize({ id: paperState.id, variant: -1, price: paperState.price });
 	};
 	const handleSelect = () => {};
 
@@ -89,5 +85,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	setSize,
-	setFooterVisible,
 })(SizePaper);

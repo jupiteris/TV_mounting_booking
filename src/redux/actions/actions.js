@@ -4,9 +4,16 @@ import {
 	FOOTER_VISIBLE,
 	INITIAL_BRACKET,
 	SET_BRACKET,
-	BRACKETS_DISIBLE,
 	SET_ADDICTIONAL_QUIZ,
 	SET_OTHER_HELP,
+	SET_SIZE_INDEX,
+	SET_ADDICTIONAL_PRICE,
+	SET_BRACKETS_PRICE,
+	SET_DATE_INDEX,
+	SET_DATE_BLOCK_INDEX,
+	SET_TIME_INDEX,
+	SET_EXPAND_MTH,
+	// SET_BOOKING_TIME,
 } from '../actionTypes';
 
 export const setStep = (step) => async (dispatch) => {
@@ -25,9 +32,17 @@ export const setSize = (size) => async (dispatch) => {
 	}
 };
 
-export const initialBracket = () => async (dispatch) => {
+export const setSizeIndex = (index) => async (dispatch) => {
 	try {
-		dispatch({ type: INITIAL_BRACKET });
+		dispatch({ type: SET_SIZE_INDEX, payload: index });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const initialBracket = (id) => async (dispatch) => {
+	try {
+		dispatch({ type: INITIAL_BRACKET, payload: id });
 	} catch (err) {
 		console.log(err);
 	}
@@ -41,9 +56,25 @@ export const setBracket = (bracket) => async (dispatch) => {
 	}
 };
 
+export const setBracketsPrice = (price) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_BRACKETS_PRICE, payload: price });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export const setAddictionalQuiz = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: SET_ADDICTIONAL_QUIZ, payload: id });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const setAddictionalPrice = (price) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_ADDICTIONAL_PRICE, payload: price });
 	} catch (err) {
 		console.log(err);
 	}
@@ -65,10 +96,41 @@ export const setFooterVisible = (visible) => async (dispatch) => {
 	}
 };
 
-export const setBracketsDisible = (disible) => async (dispatch) => {
+export const setDateIndex = (index) => async (dispatch) => {
 	try {
-		dispatch({ type: BRACKETS_DISIBLE, payload: disible });
+		dispatch({ type: SET_DATE_INDEX, payload: index });
 	} catch (err) {
 		console.log(err);
 	}
 };
+
+export const setDateBlockIndex = (indexObj) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_DATE_BLOCK_INDEX, payload: indexObj });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const setTimeIndex = (time) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_TIME_INDEX, payload: time });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const setExpandMth = (value) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_EXPAND_MTH, payload: value });
+	} catch (err) {
+		console.log(err);
+	}
+};
+// export const setBookingTime = (time) => async (dispatch) => {
+// 	try {
+// 		dispatch({ type: SET_BOOKING_TIME, payload: visible });
+// 	} catch (err) {
+// 		console.log(err);
+// 	}
+// };

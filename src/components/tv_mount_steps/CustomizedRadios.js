@@ -90,7 +90,7 @@ const CustomizedRadios = ({
 	const [paperState, setPaperState] = useState({});
 	useEffect(() => {
 		setPaperState(addictionalQuizs.find((ele) => ele.id === id));
-	}, [addictionalQuizs]);
+	}, [addictionalQuizs, id]);
 	const handleOption = () => {
 		setAddictionalQuiz(id);
 	};

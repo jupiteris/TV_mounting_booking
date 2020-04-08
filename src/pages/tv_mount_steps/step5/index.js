@@ -19,6 +19,14 @@ const useStyles = makeStyles(() => ({
 			height: 50,
 		},
 	},
+	form: {
+		height: 600,
+		overflowY: 'auto',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+			zIndex: 1,
+		},
+	},
 }));
 
 const Step5 = ({ currentStep, setStep }) => {
@@ -103,7 +111,7 @@ const Step5 = ({ currentStep, setStep }) => {
 	return (
 		<>
 			<Header step="5" stepTitle="Booking" />
-			<form className={classes.form} onSubmit={handleSubmit}>
+			<form className={classes.form} onSubmit={handleSubmit} id="form">
 				<ExpandableTitle
 					title="PERSONAL INFORMATION"
 					expandState={personalExpand}

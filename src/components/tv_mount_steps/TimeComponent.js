@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
 	timeDiv: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const TimeComponent = ({ startTime, handleTime, selectedTime }) => {
+const TimeComponent = ({ startTime, handleTime, timeIndex }) => {
 	const classes = useStyles();
 	const timeRange = startTime + '-' + (startTime + 2);
 	return (
@@ -34,7 +35,7 @@ const TimeComponent = ({ startTime, handleTime, selectedTime }) => {
 				className={classes.bookingTime}
 				onClick={(e) => handleTime(startTime)}
 				style={
-					startTime === selectedTime
+					startTime === timeIndex
 						? {
 								borderColor: '#22d1c3',
 								color: '#22d1c3',
@@ -48,4 +49,8 @@ const TimeComponent = ({ startTime, handleTime, selectedTime }) => {
 	);
 };
 
-export default TimeComponent;
+const mapStateToProps = (state) => ({
+	timeIndex: state.step.timeIndex,
+});
+
+export default connect(mapStateToProps, {})(TimeComponent);

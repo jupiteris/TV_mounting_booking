@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import CustomizedSwitch from './CustomizedSwitch';
 import { connect } from 'react-redux';
-import { setBracket, setFooterVisible } from '../../redux/actions/actions';
+import { setBracket } from '../../redux/actions/actions';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -54,29 +54,57 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const BracketPaper = ({
-	id,
-	brackets,
-	setBracket,
-	setFooterVisible,
-	bracketsDisible,
-}) => {
+const BracketPaper = ({ sizeId, id, brackets, setBracket }) => {
 	const classes = useStyles();
 	const [paperState, setPaperState] = useState({});
+	const [qtyState, setQtyState] = useState();
+	const [bracketsDisible, setBracketsDisible] = useState();
+
+	//get the selected value to check whether switch is opened and closed according the certain size.
 	useEffect(() => {
-		setPaperState(brackets.find((size) => size.id === id));
-		const visiable = brackets.find((size) => size.selected === true)
-			? true
-			: false;
-		setFooterVisible(bracketsDisible || visiable);
-	}, [brackets, id, bracketsDisible]);
+		let selected = brackets[3].selecteds.find((ele) => ele.sizeId === sizeId);
+		selected = selected ? selected.selected : false;
+		setBracketsDisible(selected);
+	}, [brackets, sizeId]);
+
+	useEffect(() => {
+		//selected bracket
+		const selectedBracket = brackets.find((bracket) => bracket.id === id);
+		//set the state of the current bracket
+		setPaperState(selectedBracket);
+		//qty lists from selected bracket
+		const selectedBracketQtys = selectedBracket.qtys;
+		//set the qty of the current brcket according the certain size.
+		//if qtys property is not exist(for example, 4th braket is for the switch)
+		if (!selectedBracketQtys) setQtyState(undefined);
+		else {
+			const bracketQtyRelatedSize = selectedBracketQtys.find(
+				(element) => element.sizeId === sizeId
+			);
+			if (bracketQtyRelatedSize) {
+				setQtyState(bracketQtyRelatedSize.qty);
+			} else {
+				setQtyState(0);
+			}
+		}
+	}, [brackets, id, sizeId]);
 	const increaseSize = () => {
-		if (paperState.qty >= 25) return;
-		setBracket({ id: paperState.id, qty: paperState.qty + 1 });
+		if (qtyState >= 25) return;
+		setBracket({
+			sizeId: sizeId,
+			id: paperState.id,
+			variant: 1,
+			price: paperState.price,
+		});
 	};
 	const decreaseSize = () => {
-		if (paperState.qty <= 0) return;
-		setBracket({ id: paperState.id, qty: paperState.qty - 1 });
+		if (qtyState <= 0) return;
+		setBracket({
+			sizeId: sizeId,
+			id: paperState.id,
+			variant: -1,
+			price: paperState.price,
+		});
 	};
 	const handleSelect = () => {};
 
@@ -84,7 +112,7 @@ const BracketPaper = ({
 		<>
 			<Paper elevation={0} className={classes.root} onClick={handleSelect}>
 				<div className={classes.nameDiv}>{paperState.name}</div>
-				{paperState.qty !== undefined ? (
+				{qtyState !== undefined ? (
 					<div className={classes.qtyDiv}>
 						<IconButton
 							aria-label="decrease"
@@ -94,7 +122,7 @@ const BracketPaper = ({
 						>
 							<RemoveCircleOutlineIcon className={classes.removeIcon} />
 						</IconButton>
-						<span className="input-label">{paperState.qty}</span>
+						<span className="input-label">{qtyState}</span>
 						<IconButton
 							aria-label="increase"
 							onClick={increaseSize}
@@ -106,7 +134,11 @@ const BracketPaper = ({
 					</div>
 				) : (
 					<div className={classes.switchDiv}>
-						<CustomizedSwitch />
+						<CustomizedSwitch
+							id={paperState.id}
+							sizeId={sizeId}
+							checked={bracketsDisible}
+						/>
 					</div>
 				)}
 			</Paper>
@@ -116,10 +148,8 @@ const BracketPaper = ({
 
 const mapStateToProps = (state) => ({
 	brackets: state.step.brackets,
-	bracketsDisible: state.step.bracketsDisible,
 });
 
 export default connect(mapStateToProps, {
 	setBracket,
-	setFooterVisible,
 })(BracketPaper);

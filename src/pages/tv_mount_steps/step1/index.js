@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SizePaper from '../../../components/tv_mount_steps/SizePaper';
 import Header from '../../../components/tv_mount_steps/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import { setFooterVisible } from '../../../redux/actions/actions';
 
 const useStyles = makeStyles(() => ({
 	sizeHeader: {
@@ -30,8 +31,13 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const Step1 = ({ sizes, totalPrice }) => {
+const sizeSchema = [1, 2, 3, 4];
+
+const Step1 = ({ sizePrice, setFooterVisible }) => {
 	const classes = useStyles();
+	useEffect(() => {
+		setFooterVisible(sizePrice);
+	}, [sizePrice]);
 	return (
 		<>
 			<Header step="1" stepTitle="What tv size did you get ?" />
@@ -39,8 +45,8 @@ const Step1 = ({ sizes, totalPrice }) => {
 				<div className={classes.nameSide}>SIZE</div>
 				<div className={classes.qtySide}>QTY</div>
 			</div>
-			{sizes.map((size) => (
-				<SizePaper id={size.id} key={size.id} />
+			{sizeSchema.map((schema) => (
+				<SizePaper id={schema} key={schema} />
 			))}
 			<div className={classes.footer}>Installation prices starts at $69</div>
 		</>
@@ -48,8 +54,7 @@ const Step1 = ({ sizes, totalPrice }) => {
 };
 
 const mapStateToProps = (state) => ({
-	sizes: state.step.sizes,
-	totalPrice: state.step.totalPrice,
+	sizePrice: state.step.sizePrice,
 });
 
-export default connect(mapStateToProps, {})(Step1);
+export default connect(mapStateToProps, { setFooterVisible })(Step1);

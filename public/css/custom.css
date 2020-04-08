@@ -4,7 +4,7 @@ body {
 }
 .upcomming-event-section .upcomming-event-carousel .item .event-item {
 	position: relative;
-	min-height: 100px;
+	min-height: 120px;
 	margin-top: 30px;
 }
 .upcomming-event-section
@@ -69,6 +69,16 @@ body {
 	color: rgb(3, 3, 3);
 	line-height: 1.2;
 	font-weight: 450;
+	margin: 0;
+}
+.upcomming-event-section
+	.upcomming-event-carousel
+	.owl-item.active.center
+	.item
+	.event-item
+	.event-content
+	.title {
+	margin-bottom: 4px;
 }
 .upcomming-event-section
 	.upcomming-event-carousel
@@ -78,7 +88,7 @@ body {
 	opacity: 1;
 	border-radius: 12px;
 	background-color: rgb(34, 209, 195);
-	padding: 20px 5px;
+	padding: 30px 5px;
 	width: 100%;
 	text-align: center;
 	position: absolute;

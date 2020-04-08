@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
 	timeDiv: {
@@ -27,23 +28,27 @@ const useStyles = makeStyles(() => ({
 	dateBlock: {
 		fontSize: 8,
 		fontWeight: 600,
+		padding: '6px 4px',
 	},
 }));
 
 const DateComponent = ({
 	date,
 	dateIndex,
+	dateBlockIndex,
+	datesBlockIndex,
 	handleDateIndex,
-	selectedDateIndex,
 }) => {
 	const classes = useStyles();
+
 	return (
 		<div className={classes.timeDiv}>
 			<div
 				className={classes.bookingTime}
 				onClick={(e) => handleDateIndex(dateIndex)}
 				style={
-					dateIndex === selectedDateIndex
+					dateIndex === dateBlockIndex.dateIndex &&
+					datesBlockIndex === dateBlockIndex.blockIndex
 						? {
 								borderColor: '#22d1c3',
 								color: '#22d1c3',
@@ -60,4 +65,8 @@ const DateComponent = ({
 	);
 };
 
-export default DateComponent;
+const mapStateToProps = (state) => ({
+	dateBlockIndex: state.step.dateBlockIndex,
+});
+
+export default connect(mapStateToProps, {})(DateComponent);

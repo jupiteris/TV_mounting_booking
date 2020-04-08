@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import ErrorSharpIcon from '@material-ui/icons/ErrorSharp';
@@ -22,15 +22,16 @@ const useStyles = makeStyles({
 	},
 	palceholder: {
 		position: 'absolute',
-		top: 9,
-		left: 10,
+		top: 10,
+		left: 6,
 		color: '#030303',
 	},
 	label: {
 		fontSize: 14,
 		color: '#030303',
 		fontWeight: 500,
-		opacity: 0.7,
+		opacity: 0.5,
+		margin: 0,
 	},
 	star: {
 		color: '#22d1c3',

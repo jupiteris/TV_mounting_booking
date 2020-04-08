@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import { connect } from 'react-redux';
-import {
-	setBracketsDisible,
-	initialBracket,
-} from '../../redux/actions/actions';
+import { setBracket, initialBracket } from '../../redux/actions/actions';
 
 const IOSSwitch = withStyles((theme) => ({
 	root: {
@@ -60,22 +57,30 @@ const IOSSwitch = withStyles((theme) => ({
 });
 
 const CustomizedSwitch = ({
-	setBracketsDisible,
-	bracketsDisible,
+	setBracket,
 	initialBracket,
+	id,
+	checked,
+	sizeId,
 }) => {
+	const [checkState, setCheckState] = useState(false);
+	useEffect(() => {
+		if (checked !== undefined && checked !== null) setCheckState(checked);
+	}, [checked]);
 	const handleChange = (event) => {
-		setBracketsDisible(event.target.checked);
-		if (event.target.checked) initialBracket();
+		setBracket({
+			id: id,
+			sizeId: sizeId,
+			checked: event.target.checked,
+		});
+		if (event.target.checked) initialBracket(sizeId);
 	};
 
-	return <IOSSwitch checked={bracketsDisible} onChange={handleChange} />;
+	return <IOSSwitch checked={checkState} onChange={handleChange} />;
 };
 
-const mapStateToProps = (state) => ({
-	bracketsDisible: state.step.bracketsDisible,
-});
+const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, { setBracketsDisible, initialBracket })(
+export default connect(mapStateToProps, { setBracket, initialBracket })(
 	CustomizedSwitch
 );
