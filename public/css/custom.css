@@ -188,3 +188,35 @@ body {
 	border-top-right-radius: 25px !important;
 	border-top-left-radius: 25px !important;
 }
+
+@media (max-width: 758px) {
+	#steps {
+		width: 100% !important;
+	}
+	#step {
+		padding-top: 95px !important;
+	}
+	#footer {
+		width: 100% !important;
+	}
+	#helps-container {
+		height: 550px;
+	}
+	#form {
+		height: 550px;
+	}
+	#last-page-container {
+		height: 550px;
+	}
+	#dateBlock {
+		padding: 0px;
+	}
+	.makeStyles-bookingForm-277 {
+		height: 550px;
+	}
+}
+
+.MuiTypography-root {
+	font-size: 11px !important;
+	font-weight: 600 !important;
+}

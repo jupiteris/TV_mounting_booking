@@ -10,7 +10,6 @@ import Step8 from './step8';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../../components/tv_mount_steps/Footer';
 import { connect } from 'react-redux';
-import './steps.css';
 
 const useStyles = makeStyles(() => ({
 	steps: {
@@ -33,8 +32,8 @@ const useStyles = makeStyles(() => ({
 const StepPage = ({ currentStep }) => {
 	const classes = useStyles();
 	return (
-		<div className={classes.steps}>
-			<div className={classes.step}>
+		<div className={classes.steps} id="steps">
+			<div className={classes.step} id="step">
 				{currentStep === 0 && <Step1 />}
 				{currentStep === 1 && <Step2 />}
 				{currentStep === 2 && <Step3 />}
@@ -44,8 +43,8 @@ const StepPage = ({ currentStep }) => {
 				{currentStep === 6 && <Step7 />}
 				{currentStep === 7 && <Step8 />}
 			</div>
-			{currentStep >= 0 && currentStep < 7 && (
-				<div className={classes.footer}>
+			{currentStep !== 4 && currentStep < 7 && (
+				<div className={classes.footer} id="footer">
 					<Footer />
 				</div>
 			)}

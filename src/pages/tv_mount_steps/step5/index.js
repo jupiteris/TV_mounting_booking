@@ -19,14 +19,14 @@ const useStyles = makeStyles(() => ({
 			height: 50,
 		},
 	},
-	form: {
-		height: 600,
-		overflowY: 'auto',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-			zIndex: 1,
-		},
-	},
+	// form: {
+	// 	height: 600,
+	// 	overflowY: 'auto',
+	// 	'&::-webkit-scrollbar': {
+	// 		display: 'none',
+	// 		zIndex: 1,
+	// 	},
+	// },
 }));
 
 const Step5 = ({ currentStep, setStep }) => {
