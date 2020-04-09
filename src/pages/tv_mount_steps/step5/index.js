@@ -17,7 +17,18 @@ const useStyles = makeStyles(() => ({
 			background: '#22d1c3',
 			color: 'white',
 			height: 50,
+			'@media (max-height: 640px)': {
+				fontSize: 12,
+				height: 30,
+			},
+			'@media (max-height: 812px) and (min-height: 641px)': {
+				fontSize: 14,
+				height: 40,
+			},
 		},
+		// '@media (max-height: 640px)': {
+		// 	padding: '20px 0px',
+		// },
 	},
 	// form: {
 	// 	height: 600,
@@ -111,7 +122,7 @@ const Step5 = ({ currentStep, setStep }) => {
 	return (
 		<>
 			<Header step="5" stepTitle="Booking" />
-			<form className={classes.form} onSubmit={handleSubmit} id="form">
+			<form className={classes.form} onSubmit={handleSubmit}>
 				<ExpandableTitle
 					title="PERSONAL INFORMATION"
 					expandState={personalExpand}

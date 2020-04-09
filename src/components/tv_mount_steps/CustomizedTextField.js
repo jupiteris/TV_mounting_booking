@@ -18,13 +18,21 @@ const useStyles = makeStyles({
 	formGroup: {
 		position: 'relative',
 		width: '100%',
-		marginTop: 20,
+		marginTop: 15,
+		'@media (max-height: 670px)': {
+			marginTop: 10,
+		},
 	},
 	palceholder: {
 		position: 'absolute',
-		top: 10,
+		top: 15,
 		left: 6,
 		color: '#030303',
+		display: 'flex',
+		alignItems: 'center',
+		'@media (max-height: 670px)': {
+			top: 6,
+		},
 	},
 	label: {
 		fontSize: 14,
@@ -32,26 +40,47 @@ const useStyles = makeStyles({
 		fontWeight: 500,
 		opacity: 0.5,
 		margin: 0,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
+		'@media (max-height: 823px) and (min-height: 671px)': {
+			fontSize: 12,
+		},
 	},
 	star: {
 		color: '#22d1c3',
 	},
 	formControl: {
 		width: '100%',
-		padding: '11px 1%',
-		fontSize: 16,
+		padding: '15px 2%',
+		fontSize: 14,
 		color: '#030303',
 		fontWeight: 450,
 		borderRadius: 10,
 		borderWidth: 0,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
+		'@media (max-height: 671px)': {
+			padding: '10px 2%',
+		},
+		'@media (max-height: 823px) and (min-height: 671px)': {
+			fontSize: 12,
+		},
 	},
 	errorMark: {
 		position: 'absolute',
 		color: '#ff1616',
-		padding: '11px 3px',
+		padding: '8px 3px !important',
 		top: 0,
 		'& svg': {
-			width: 30,
+			width: 25,
+			'@media (max-width: 414px)': {
+				width: 15,
+			},
+		},
+		'@media (max-width: 414px)': {
+			padding: '11px -2px !important',
 		},
 	},
 	errorDiv: {

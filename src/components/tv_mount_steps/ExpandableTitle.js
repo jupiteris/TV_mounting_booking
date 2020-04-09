@@ -12,8 +12,14 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		padding: '0px 20px',
+		padding: '0px 10px',
 		marginTop: 30,
+		'@media (max-width: 414px)': {
+			fontSize: 8,
+		},
+		'@media (max-height: 640px)': {
+			marginTop: 15,
+		},
 	},
 	expand: {
 		padding: 0,

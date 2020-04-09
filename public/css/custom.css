@@ -190,33 +190,44 @@ body {
 }
 
 @media (max-width: 758px) {
-	#steps {
-		width: 100% !important;
+}
+
+@media (max-width: 414px) {
+	.upcomming-event-section
+		.upcomming-event-carousel
+		.item
+		.event-item
+		.event-content
+		.title {
+		font-size: 9px;
 	}
-	#step {
-		padding-top: 95px !important;
+	.upcomming-event-section .owl-theme .owl-nav [class*='owl-']:before {
+		font-size: 15px;
+		line-height: 30px;
 	}
-	#footer {
-		width: 100% !important;
+	.upcomming-event-section .upcomming-event-carousel .item .event-item {
+		position: relative;
+		min-height: 70px;
+		margin-top: 30px;
 	}
-	#helps-container {
-		height: 550px;
+	.upcomming-event-section
+		.upcomming-event-carousel
+		.item
+		.event-item
+		.event-content {
+		border-radius: 5px;
+		padding: 16px 5px;
+		border-width: 2px;
 	}
-	#form {
-		height: 550px;
-	}
-	#last-page-container {
-		height: 550px;
-	}
-	#dateBlock {
-		padding: 0px;
-	}
-	.makeStyles-bookingForm-277 {
-		height: 550px;
+	.upcomming-event-section .owl-theme .owl-nav [class*='owl-'] {
+		margin: 10px;
+		width: 30px;
+		height: 30px;
 	}
 }
 
-.MuiTypography-root {
-	font-size: 11px !important;
-	font-weight: 600 !important;
+@media (max-height: 640px) {
+}
+
+@media (max-height: 812px) and (min-height: 641px) {
 }

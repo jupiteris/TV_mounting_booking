@@ -7,18 +7,31 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'flex-start',
 		color: '#22d1c3',
-		marginLeft: 5,
+		marginLeft: 10,
+		fontSize: 18,
+		'@media (max-width: 414px)': {
+			fontSize: 14,
+		},
+		'@media (max-width: 320px)': {
+			fontSize: 12,
+		},
 	},
 	stepNo: {
-		fontSize: 18,
 		fontWeight: 550,
 	},
 	followIcon: {
-		fontSize: 17,
+		fontSize: '17px !important',
 		marginTop: 6,
+		'@media (max-width: 414px)': {
+			fontSize: '13px !important',
+			marginTop: 4,
+		},
+		'@media (max-width: 320px)': {
+			fontSize: '10px !important',
+			marginTop: 3,
+		},
 	},
 	stepTitle: {
-		fontSize: 18,
 		color: '#7c7c7c',
 		fontWeight: 430,
 	},

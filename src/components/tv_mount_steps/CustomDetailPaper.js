@@ -11,6 +11,10 @@ const useStyles = makeStyles(() => ({
 		padding: 15,
 		backgroundColor: '#fff',
 		marginTop: 30,
+		'@media (max-height: 640px)': {
+			padding: '8px 15px',
+			borderRadius: 10,
+		},
 	},
 	title: {
 		fontSize: 11,
@@ -19,10 +23,13 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
 	},
 	icon: {
 		'& svg': {
-			fontSize: 24,
+			fontSize: '24px !important',
 			padding: 5,
 			background: '#dffcfa',
 			borderRadius: 8,
@@ -36,22 +43,32 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		fontSize: 12,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
 	},
-	detailTitle: { fontSize: 12, fontWeight: 500 },
+	detailTitle: { fontWeight: 500 },
 	serviceEdit: {
 		width: '10%',
 		display: 'flex',
 		justifyContent: 'flex-end',
 		'& svg': {
-			fontSize: 24,
+			fontSize: '24px !important',
 			padding: 5,
 			borderRadius: 20,
 			border: '1px solid #ebebeb',
+			'@media (max-width: 414px)': {
+				fontSize: '18px !important',
+			},
 		},
 	},
 	phoneNumber: {
 		fontWeight: 500,
 		fontSize: 12,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
 	},
 }));
 

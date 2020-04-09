@@ -8,13 +8,6 @@ import CouponPaper from '../../../components/tv_mount_steps/CouponPaper';
 import CustomDetailPaper from '../../../components/tv_mount_steps/CustomDetailPaper';
 
 const useStyles = makeStyles(() => ({
-	lastStep: {
-		height: 600,
-		overflowY: 'auto',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
 	paperGroup: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -26,6 +19,9 @@ const useStyles = makeStyles(() => ({
 		padding: 20,
 		color: '#888888',
 		fontWeight: 500,
+		'@media (max-height: 640px)': {
+			padding: 18,
+		},
 	},
 }));
 
@@ -37,7 +33,7 @@ const Step7 = () => {
 				step="7"
 				stepTitle="One last thing, Test! <br/>Review and Confirm your details"
 			/>
-			<div id="last-page-container" className={classes.lastStep}>
+			<div id="last-page-container">
 				<SummaryPaper />
 				<div className={classes.payAffer}>Pay after installation is done</div>
 				<div className={classes.paperGroup}>

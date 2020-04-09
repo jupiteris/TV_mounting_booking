@@ -11,19 +11,26 @@ import { setBracket } from '../../redux/actions/actions';
 const useStyles = makeStyles(() => ({
 	root: {
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 		alignItems: 'center',
-		borderRadius: 15,
+		borderRadius: 20,
 		padding: 17,
 		backgroundColor: '#fff',
 		margin: '26px 0px',
 		opacity: 1,
+		'@media (max-height: 640px)': {
+			padding: '8px 15px',
+			borderRadius: 10,
+		},
 	},
 	nameDiv: {
 		width: '64%',
 		fontWeight: 600,
 		fontSize: 14,
 		color: '#030303',
+		'@media (max-height: 640px)': {
+			fontSize: 10,
+		},
 	},
 	qtyDiv: {
 		width: '36%',
@@ -32,6 +39,9 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		fontWeight: 1000,
 		fontSize: 18,
+		'@media (max-height: 640px)': {
+			fontSize: 14,
+		},
 		'& button': {
 			padding: 0,
 		},
@@ -46,11 +56,9 @@ const useStyles = makeStyles(() => ({
 	},
 	addIcon: {
 		color: '#22d1c3',
-		fontSize: 30,
 	},
 	removeIcon: {
 		color: '#e7e7e7',
-		fontSize: 30,
 	},
 }));
 

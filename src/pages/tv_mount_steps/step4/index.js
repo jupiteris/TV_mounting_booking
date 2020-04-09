@@ -7,10 +7,22 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
 	helps: {
-		height: 600,
+		height: 700,
 		overflowY: 'auto',
 		'&::-webkit-scrollbar': {
 			display: 'none',
+		},
+		'@media (max-height: 568px)': {
+			height: 400,
+		},
+		'@media (max-height: 669px) and (min-height: 569px)': {
+			height: 480,
+		},
+		'@media (max-height: 736px) and (min-height: 670px)': {
+			height: 580,
+		},
+		'@media (max-height: 823px) and (min-height: 737px)': {
+			height: 620,
 		},
 	},
 	skipField: {

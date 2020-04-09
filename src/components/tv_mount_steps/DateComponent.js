@@ -29,6 +29,11 @@ const useStyles = makeStyles(() => ({
 		fontSize: 8,
 		fontWeight: 600,
 		padding: '6px 4px',
+		'@media (max-height: 640px)': {
+			padding: 2,
+			fontSize: 7,
+			fontWeight: 600,
+		},
 	},
 }));
 

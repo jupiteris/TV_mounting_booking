@@ -31,13 +31,17 @@ const useStyles = makeStyles(() => ({
 		width: '100%',
 		color: '#7c7c7c',
 		fontWeight: 500,
-		fontSize: 12,
+		fontSize: 10,
 	},
 	total: {
 		'& span': {
-			fontSize: 18,
+			fontSize: 16,
 			fontWeight: 800,
+			'@media (max-width: 414px)': {
+				fontSize: 14,
+			},
 		},
+		width: '35%',
 	},
 	details: {
 		color: '#3C99FF',
@@ -46,6 +50,29 @@ const useStyles = makeStyles(() => ({
 	moveIcons: {
 		display: 'flex',
 		justifyContent: 'flex-end',
+		width: '65%',
+		'& button': {
+			fontWeight: 500,
+			fontSize: 14,
+			textTransform: 'none',
+			'@media (max-width: 414px) and (min-width: 321px)': {
+				fontSize: 12,
+				padding: '5px 10px',
+				'& svg': {
+					fontSize: '18px !important',
+				},
+			},
+			'@media (max-width: 320px)': {
+				fontSize: 10,
+				padding: 5,
+				'& svg': {
+					fontSize: '15px !important',
+				},
+			},
+			'& span': {
+				margin: 0,
+			},
+		},
 	},
 	drawer: {
 		borderRadius: 20,
@@ -54,25 +81,18 @@ const useStyles = makeStyles(() => ({
 		'& button': {
 			backgroundColor: 'transparent',
 			color: 'black',
-			fontWeight: 500,
-			fontSize: 14,
 			border: 0,
 			boxShadow: 'none',
-			textTransform: 'none',
-			'&:hover': {
-				border: 0,
-				backgroundColor: 'transparent',
-				boxShadow: 'none',
-			},
+		},
+		marginRight: 50,
+		'@media (max-width: 320px)': {
+			marginRight: 30,
 		},
 	},
 	forward: {
 		'& button': {
-			textTransform: 'none',
 			backgroundColor: '#0575C2',
 			color: 'white',
-			fontWeight: 500,
-			fontSize: 14,
 			borderRadius: 20,
 		},
 	},

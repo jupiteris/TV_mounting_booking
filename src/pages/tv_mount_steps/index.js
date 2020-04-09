@@ -18,21 +18,40 @@ const useStyles = makeStyles(() => ({
 		margin: '0 auto',
 		display: 'flex',
 		justifyContent: 'center',
+		'@media (max-width: 414px)': {
+			width: '100% !important',
+		},
 	},
 	step: {
 		width: '80%',
 		paddingTop: 30,
+		'@media (max-width: 414px)': {
+			paddingTop: '45px !important',
+		},
+		'& svg': {
+			fontSize: 30,
+			'@media (max-width: 414px)': {
+				fontSize: 20,
+			},
+		},
+		'& button': {
+			padding: 0,
+		},
 	},
 	footer: {
 		position: 'absolute',
 		width: '59%',
 		bottom: 10,
+		'@media (max-width: 414px)': {
+			width: '100% !important',
+			bottom: 0,
+		},
 	},
 }));
 const StepPage = ({ currentStep }) => {
 	const classes = useStyles();
 	return (
-		<div className={classes.steps} id="steps">
+		<div className={classes.steps}>
 			<div className={classes.step} id="step">
 				{currentStep === 0 && <Step1 />}
 				{currentStep === 1 && <Step2 />}
@@ -44,7 +63,7 @@ const StepPage = ({ currentStep }) => {
 				{currentStep === 7 && <Step8 />}
 			</div>
 			{currentStep !== 4 && currentStep < 7 && (
-				<div className={classes.footer} id="footer">
+				<div className={classes.footer}>
 					<Footer />
 				</div>
 			)}

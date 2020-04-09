@@ -17,20 +17,29 @@ const useStyles = makeStyles(() => ({
 		'&:hover': {
 			opacity: 1,
 		},
+		'@media (max-width: 414px)': {
+			padding: '8px 15px',
+			borderRadius: 10,
+		},
 	},
 	title: {
 		width: '100%',
 		fontWeight: 700,
 		paddingBottom: 5,
 		fontSize: 13,
+		'@media (max-width: 414px)': {
+			fontSize: 12,
+		},
 	},
 	explain: {
 		width: '100%',
 		fontSize: 10,
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
 	},
 	radios: {
 		width: '100%',
-		fontSize: 11,
 	},
 }));
 

@@ -53,6 +53,17 @@ const useStyles = makeStyles({
 	radiosGroup: {
 		flexDirection: 'row',
 		padding: '15px 0px',
+		'@media (max-height: 640px)': {
+			padding: '10px 0px',
+		},
+		'& span': {
+			'@media (max-width: 414px)': {
+				fontSize: '10px !important',
+			},
+			'@media (max-width: 320px)': {
+				fontSize: '9px !important',
+			},
+		},
 	},
 	radioWrap: {
 		margin: 0,
@@ -61,6 +72,18 @@ const useStyles = makeStyles({
 		},
 		'& .MuiTypography-body1': {
 			marginRight: 5,
+		},
+		'&:nth-child(1)': {
+			'@media (max-width: 414px)': {
+				width: '40% !important',
+			},
+			width: '30% !important',
+		},
+		'&:nth-child(2)': {
+			'@media (max-width: 414px)': {
+				width: '60% !important',
+			},
+			width: '70% !important',
 		},
 	},
 });

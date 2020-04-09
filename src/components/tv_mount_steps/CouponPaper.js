@@ -9,6 +9,10 @@ const useStyles = makeStyles(() => ({
 		borderRadius: 20,
 		padding: 15,
 		backgroundColor: '#fff',
+		'@media (max-height: 640px)': {
+			padding: '10px 8px',
+			borderRadius: 10,
+		},
 	},
 	title: {
 		fontSize: 11,
@@ -17,6 +21,9 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
 	},
 	icon: {
 		'& svg': {
@@ -37,14 +44,30 @@ const useStyles = makeStyles(() => ({
 		textAlign: 'center',
 		marginTop: 10,
 		fontWeight: 500,
+		padding: 1,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
 	},
-	btnDiv: { padding: 7, display: 'flex', justifyContent: 'center' },
+	btnDiv: {
+		padding: '7px 0px',
+		display: 'flex',
+		justifyContent: 'center',
+	},
 	btn: {
 		width: '33%',
 		background: '#22d1c3',
 		color: 'white',
 		fontWeight: 500,
 		fontSize: 9,
+		borderRadius: 5,
+		'@media (max-width: 414px)': {
+			fontSize: 8,
+			minWidth: 40,
+			borderRadius: 3,
+			padding: '2px 0px !important',
+		},
+		textTransform: 'none',
 	},
 }));
 

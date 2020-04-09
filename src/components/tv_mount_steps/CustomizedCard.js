@@ -11,6 +11,29 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
 	root: {
 		maxWidth: 345,
+		'@media (max-width: 414px)': {
+			maxWidth: 220,
+		},
+		'& p': {
+			'@media (max-width: 414px)': {
+				fontSize: '8px !important',
+			},
+		},
+		'& h2': {
+			'@media (max-width: 414px)': {
+				fontSize: '10px !important',
+			},
+		},
+		'& img': {
+			'@media (max-width: 414px)': {
+				height: '100px',
+			},
+		},
+		'& button': {
+			'@media (max-width: 414px)': {
+				fontSize: 10,
+			},
+		},
 	},
 });
 

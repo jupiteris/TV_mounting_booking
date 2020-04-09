@@ -24,6 +24,15 @@ const useStyles = makeStyles(() => ({
 		fontSize: 14,
 		fontWeight: 430,
 		color: '#030303',
+		'& span': {
+			'@media (max-height: 640px)': {
+				padding: 0,
+			},
+		},
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+			width: '60%',
+		},
 	},
 	checkbox: {
 		color: '#22d1c3 !important',
@@ -41,6 +50,10 @@ const useStyles = makeStyles(() => ({
 		'& button': {
 			padding: 0,
 		},
+		'@media (max-width: 414px)': {
+			fontSize: 12,
+			width: '40%',
+		},
 	},
 	addIcon: {
 		color: '#22d1c3',
@@ -49,7 +62,10 @@ const useStyles = makeStyles(() => ({
 		color: '#e7e7e7',
 	},
 	helpIcon: {
-		fontSize: '1.2rem',
+		fontSize: '25px !important',
+		'@media (max-width: 414px)': {
+			fontSize: '15px !important',
+		},
 		color: '#22d1c3',
 	},
 }));
@@ -139,9 +155,7 @@ const ExternalCard = ({ externalObj, mainId, setOtherHelp }) => {
 					anchorEl={anchorEl}
 					transition
 				>
-					<div className={classes.popper}>
-						<CustomizedCard handleClose={handleClose} />
-					</div>
+					<CustomizedCard handleClose={handleClose} />
 				</Popper>
 			</div>
 		</div>

@@ -13,6 +13,10 @@ const useStyles = makeStyles(() => ({
 		fontSize: 10,
 		color: '#b7b7b7',
 		fontWeight: 500,
+		'@media (max-height: 568px)': {
+			padding: '25px 20px 2px 20px',
+			fontSize: 8,
+		},
 	},
 	nameSide: {
 		width: '64%',
@@ -28,6 +32,10 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		marginTop: 90,
+		'@media (max-height: 568px)': {
+			marginTop: 50,
+			fontSize: 12,
+		},
 	},
 }));
 
@@ -41,7 +49,7 @@ const Step1 = ({ sizePrice, setFooterVisible }) => {
 	return (
 		<>
 			<Header step="1" stepTitle="What tv size did you get ?" />
-			<div className={classes.sizeHeader}>
+			<div className={classes.sizeHeader} id="sizeHeader">
 				<div className={classes.nameSide}>SIZE</div>
 				<div className={classes.qtySide}>QTY</div>
 			</div>

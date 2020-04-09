@@ -15,6 +15,11 @@ const useStyles = makeStyles(() => ({
 		backgroundColor: '#fff',
 		margin: '20px 0px',
 		width: '100%',
+		'@media (max-width: 414px)': {
+			borderRadius: 10,
+			padding: '8px 15px',
+			margin: '10px 0px',
+		},
 	},
 	carouselDiv: {
 		display: 'flex',
@@ -24,7 +29,10 @@ const useStyles = makeStyles(() => ({
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'center',
-		margin: '20px 0px 30px 0px',
+		margin: '10px 0px 20px 0px',
+		'@media (max-height: 640px)': {
+			margin: '15px 0px 20px 0px',
+		},
 	},
 	moreDaysButton: {
 		width: '25%',
@@ -32,6 +40,12 @@ const useStyles = makeStyles(() => ({
 		color: '#030303',
 		fontSize: 9,
 		fontWeight: 500,
+		padding: '10px 20px !important',
+		'@media (max-width: 414px)': {
+			width: '30%',
+			padding: '3px 0px !important',
+			fontSize: 7,
+		},
 	},
 	line: {
 		marginLeft: -20,
@@ -47,7 +61,16 @@ const useStyles = makeStyles(() => ({
 			padding: '20px 0px',
 			fontSize: 14,
 			fontWeight: 500,
+			'@media (max-width: 414px)': {
+				fontSize: 9,
+			},
+			'@media (max-height: 640px)': {
+				padding: '10px 0px 5px 0px !important',
+			},
 		},
+	},
+	spaceDiv: {
+		padding: 10,
 	},
 }));
 
@@ -87,6 +110,7 @@ const DatePaper = ({ expandMth, setTimeIndex, setExpandMth }) => {
 							/>
 						))}
 					</div>
+					<div className={classes.spaceDiv}></div>
 				</div>
 			</Paper>
 		</>

@@ -23,6 +23,12 @@ const useStyles = makeStyles(() => ({
 			borderColor: '#22d1c3',
 			color: '#22d1c3',
 		},
+		'@media (max-width: 414px)': {
+			fontSize: 8,
+		},
+		'@media (max-height: 640px)': {
+			padding: 6,
+		},
 	},
 }));
 

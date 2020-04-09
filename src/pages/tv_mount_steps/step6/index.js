@@ -5,15 +5,7 @@ import ExpandableTitle from '../../../components/tv_mount_steps/ExpandableTitle'
 import DatePaper from '../../../components/tv_mount_steps/DatePaper';
 import { connect } from 'react-redux';
 
-const useStyles = makeStyles(() => ({
-	bookingForm: {
-		height: 600,
-		overflowY: 'auto',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-}));
+const useStyles = makeStyles(() => ({}));
 
 const Step6 = () => {
 	const classes = useStyles();

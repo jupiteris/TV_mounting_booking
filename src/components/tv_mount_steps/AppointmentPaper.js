@@ -11,6 +11,10 @@ const useStyles = makeStyles(() => ({
 		borderRadius: 15,
 		padding: 20,
 		backgroundColor: '#fff',
+		'@media (max-height: 640px)': {
+			padding: '8px 15px',
+			borderRadius: 10,
+		},
 	},
 	title: {
 		fontSize: 11,
@@ -19,10 +23,13 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
 	},
 	icon: {
 		'& svg': {
-			fontSize: 24,
+			fontSize: '24px !important',
 			padding: 5,
 			background: '#dffcfa',
 			borderRadius: 8,
@@ -38,7 +45,13 @@ const useStyles = makeStyles(() => ({
 		marginTop: 10,
 		alignItems: 'center',
 	},
-	date: { fontSize: 12, fontWeight: 500 },
+	date: {
+		fontSize: 12,
+		fontWeight: 500,
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
+	},
 	serviceEdit: {
 		width: '10%',
 		display: 'flex',
@@ -47,10 +60,13 @@ const useStyles = makeStyles(() => ({
 			padding: 0,
 		},
 		'& svg': {
-			fontSize: 24,
+			fontSize: '24px !important',
 			padding: 5,
 			borderRadius: 20,
 			border: '1px solid #ebebeb',
+			'@media (max-width: 414px)': {
+				fontSize: '18px !important',
+			},
 		},
 	},
 }));

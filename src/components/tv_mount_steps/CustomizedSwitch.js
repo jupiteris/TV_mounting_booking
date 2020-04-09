@@ -9,6 +9,10 @@ const IOSSwitch = withStyles((theme) => ({
 		width: 42,
 		height: 26,
 		padding: 0,
+		'@media (max-width: 320px)': {
+			width: 32,
+			height: 20,
+		},
 	},
 	switchBase: {
 		padding: 1,
@@ -29,6 +33,10 @@ const IOSSwitch = withStyles((theme) => ({
 	thumb: {
 		width: 24,
 		height: 24,
+		'@media (max-width: 320px)': {
+			width: 18,
+			height: 18,
+		},
 	},
 	track: {
 		borderRadius: 26 / 2,

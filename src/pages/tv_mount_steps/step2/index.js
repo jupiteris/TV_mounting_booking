@@ -13,6 +13,10 @@ const useStyles = makeStyles(() => ({
 		fontSize: 10,
 		color: '#b7b7b7',
 		fontWeight: 500,
+		'@media (max-height: 568px)': {
+			padding: '25px 20px 2px 20px',
+			fontSize: 8,
+		},
 	},
 	nameSide: {
 		width: '64%',

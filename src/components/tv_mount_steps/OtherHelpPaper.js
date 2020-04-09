@@ -10,6 +10,9 @@ import ExpandableTitle from './ExpandableTitle';
 const useStyles = makeStyles(() => ({
 	root: {
 		margin: '25px 0px',
+		'@media (max-height: 640px)': {
+			margin: 0,
+		},
 	},
 	paper: {
 		marginTop: 10,
@@ -20,16 +23,26 @@ const useStyles = makeStyles(() => ({
 		'&:hover': {
 			opacity: 1,
 		},
+		'@media (max-width: 414px)': {
+			marginTop: 0,
+			padding: '10px 8px',
+			borderRadius: 10,
+		},
 	},
 	line: {
-		marginLeft: -20,
-		marginRight: -20,
+		margin: '20px -20px',
+		'@media (max-width: 414px)': {
+			margin: '10px -20px',
+		},
 	},
 	content: {
 		fontWeight: 500,
 		color: '#b7b7b7',
 		fontSize: 11,
 		padding: 10,
+		'@media (max-width: 414px)': {
+			fontSize: 8,
+		},
 	},
 	button: {
 		display: 'flex',
@@ -43,6 +56,10 @@ const useStyles = makeStyles(() => ({
 		fontSize: 9,
 		background: '#d2d0d8',
 		fontWeight: 600,
+		'@media (max-width: 414px)': {
+			fontSize: 8,
+			minWidth: 20,
+		},
 	},
 }));
 

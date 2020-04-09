@@ -12,6 +12,10 @@ const useStyles = makeStyles(() => ({
 		padding: 15,
 		backgroundColor: '#fff',
 		marginTop: 30,
+		'@media (max-height: 640px)': {
+			padding: '8px 15px',
+			borderRadius: 10,
+		},
 	},
 	title: {
 		fontSize: 11,
@@ -20,13 +24,19 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+		},
 	},
 	icon: {
 		'& svg': {
-			fontSize: 24,
+			fontSize: '24px !important',
 			padding: 5,
 			background: '#dffcfa',
 			borderRadius: 8,
+			'@media (max-width: 414px)': {
+				fontSize: '20px !important',
+			},
 		},
 		width: '10%',
 	},
@@ -41,8 +51,11 @@ const useStyles = makeStyles(() => ({
 	},
 	seviceIcon: {
 		'& svg': {
-			fontSize: 18,
+			fontSize: '18px !important',
 			color: '#22d1c3',
+			'@media (max-width: 414px)': {
+				fontSize: '15px !important',
+			},
 		},
 		width: '10%',
 	},
@@ -50,28 +63,34 @@ const useStyles = makeStyles(() => ({
 		width: '40%',
 		fontWeight: 500,
 		fontSize: 14,
+		'@media (max-width: 414px)': {
+			fontSize: 10,
+		},
 	},
 	servicePrice: {
-		width: '40%',
+		width: '38%',
 		display: 'flex',
 		justifyContent: 'flex-end',
 	},
 	serviceEdit: {
-		width: '10%',
+		width: '12%',
 		display: 'flex',
 		justifyContent: 'flex-end',
 		'& button': {
 			padding: 0,
 			'& svg': {
-				fontSize: 24,
+				fontSize: '24px !important',
 				padding: 5,
 				borderRadius: 20,
 				border: '1px solid #ebebeb',
+				'@media (max-width: 414px)': {
+					fontSize: '18px !important',
+				},
 			},
 		},
 	},
 	priceBoard: {
-		width: '45%',
+		width: '50%',
 		border: '2px solid #ebebeb',
 		textAlign: 'center',
 		padding: 5,
@@ -82,6 +101,10 @@ const useStyles = makeStyles(() => ({
 		'&:hover': {
 			borderColor: '#22d1c3',
 			color: '#22d1c3',
+		},
+		'@media (max-width: 414px)': {
+			fontSize: 9,
+			padding: 2,
 		},
 	},
 }));
