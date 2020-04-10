@@ -13,6 +13,7 @@ import {
 	SET_DATE_BLOCK_INDEX,
 	SET_TIME_INDEX,
 	SET_EXPAND_MTH,
+	SET_TOTAL_PRICE,
 	// SET_BOOKING_TIME,
 } from '../actionTypes';
 
@@ -109,6 +110,7 @@ const initialState = {
 	sizePrice: 0,
 	bracketsPrice: 0,
 	addictionalPrice: 0,
+	totalPrice: 0,
 	footerVisible: false,
 	dateIndex: 0,
 	dateBlockIndex: {},
@@ -274,6 +276,12 @@ export default function (state = initialState, action) {
 						};
 					} else return otherHelp;
 				}),
+			};
+		}
+		case SET_TOTAL_PRICE: {
+			return {
+				...state,
+				totalPrice: action.payload,
 			};
 		}
 		case FOOTER_VISIBLE: {

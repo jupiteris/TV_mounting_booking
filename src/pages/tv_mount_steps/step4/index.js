@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
 			height: 580,
 		},
 		'@media (max-height: 823px) and (min-height: 737px)': {
-			height: 620,
+			height: 600,
 		},
 	},
 	skipField: {
@@ -50,7 +50,7 @@ const Step4 = ({ otherHelps }) => {
 	return (
 		<>
 			<Header step="4" stepTitle="What else can we help <br/>you set up" />
-			<div className={classes.helps} id="helps-container">
+			<div className={classes.helps}>
 				{otherHelps.map((help) => (
 					<OtherHelpPaper key={help.id} helpObj={help} />
 				))}

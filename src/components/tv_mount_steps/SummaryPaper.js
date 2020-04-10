@@ -136,6 +136,48 @@ const SummaryPaper = () => {
 						</IconButton>
 					</div>
 				</div>
+				<div className={classes.serviceItem}>
+					<div className={classes.seviceIcon}>
+						<DoneIcon />
+					</div>
+					<div className={classes.serviceName}>Drywall or wood</div>
+					<div className={classes.servicePrice}>
+						<div className={classes.priceBoard}>$99</div>
+					</div>
+					<div className={classes.serviceEdit}>
+						<IconButton aria-label="edit">
+							<EditIcon />
+						</IconButton>
+					</div>
+				</div>
+				<div className={classes.serviceItem}>
+					<div className={classes.seviceIcon}>
+						<DoneIcon />
+					</div>
+					<div className={classes.serviceName}>Fixed</div>
+					<div className={classes.servicePrice}>
+						<div className={classes.priceBoard}>$99</div>
+					</div>
+					<div className={classes.serviceEdit}>
+						<IconButton aria-label="edit">
+							<EditIcon />
+						</IconButton>
+					</div>
+				</div>
+				<div className={classes.serviceItem}>
+					<div className={classes.seviceIcon}>
+						<DoneIcon />
+					</div>
+					<div className={classes.serviceName}>On the wall</div>
+					<div className={classes.servicePrice}>
+						<div className={classes.priceBoard}>$99</div>
+					</div>
+					<div className={classes.serviceEdit}>
+						<IconButton aria-label="edit">
+							<EditIcon />
+						</IconButton>
+					</div>
+				</div>
 			</div>
 		</Paper>
 	);

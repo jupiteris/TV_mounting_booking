@@ -11,6 +11,7 @@ import {
 	setSizeIndex,
 	setAddictionalPrice,
 	setBracketsPrice,
+	setTotalPrice,
 } from '../../redux/actions/actions';
 import DetailsComponent from './DetailsComponent';
 
@@ -64,7 +65,7 @@ const useStyles = makeStyles(() => ({
 			},
 			'@media (max-width: 320px)': {
 				fontSize: 10,
-				padding: 5,
+				padding: '4px 8px',
 				'& svg': {
 					fontSize: '15px !important',
 				},
@@ -104,6 +105,7 @@ const Footer = ({
 	sizes,
 	sizePrice,
 	bracketsPrice,
+	totalPrice,
 	sizeIndex,
 	addictionalPrice,
 	addictionalQuizs,
@@ -111,10 +113,10 @@ const Footer = ({
 	setSizeIndex,
 	setBracketsPrice,
 	setAddictionalPrice,
+	setTotalPrice,
 }) => {
 	const classes = useStyles();
 	const [sizeLen, setSizeLen] = useState(0);
-	const [totalPrice, setTotalPrice] = useState(0);
 	useEffect(() => {
 		const selectedSizes = sizes.filter((size) => size.qty > 0);
 		//if step is 2
@@ -225,7 +227,7 @@ const Footer = ({
 									style={{ opacity: footerVisible ? 1 : 0.5 }}
 									disabled={!footerVisible}
 								>
-									Next Step
+									{currentStep === 3 ? 'Skip' : 'Next Step'}
 								</Button>
 							</div>
 						</div>
@@ -259,6 +261,7 @@ const mapStateToProps = (state) => ({
 	footerVisible: state.step.footerVisible,
 	sizePrice: state.step.sizePrice,
 	bracketsPrice: state.step.bracketsPrice,
+	totalPrice: state.step.totalPrice,
 	addictionalPrice: state.step.addictionalPrice,
 	addictionalQuizs: state.step.addictionalQuizs,
 	sizes: state.step.sizes,
@@ -270,4 +273,5 @@ export default connect(mapStateToProps, {
 	setSizeIndex,
 	setBracketsPrice,
 	setAddictionalPrice,
+	setTotalPrice,
 })(Footer);

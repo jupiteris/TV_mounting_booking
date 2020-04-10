@@ -13,6 +13,7 @@ import {
 	SET_DATE_BLOCK_INDEX,
 	SET_TIME_INDEX,
 	SET_EXPAND_MTH,
+	SET_TOTAL_PRICE,
 	// SET_BOOKING_TIME,
 } from '../actionTypes';
 
@@ -123,6 +124,14 @@ export const setTimeIndex = (time) => async (dispatch) => {
 export const setExpandMth = (value) => async (dispatch) => {
 	try {
 		dispatch({ type: SET_EXPAND_MTH, payload: value });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const setTotalPrice = (price) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_TOTAL_PRICE, payload: price });
 	} catch (err) {
 		console.log(err);
 	}

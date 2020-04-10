@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 	},
 	closeButton: {
 		position: 'relative',
-		fontSize: 40,
+		fontSize: 30,
 		cursor: 'pointer',
 	},
 	list: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 	},
 	orderDetail: {
 		'& h1': {
-			fontSize: 18,
+			fontSize: 14,
 			fontWeight: 500,
 			fontStyle: 'normal',
 			fontStretch: 'normal',
@@ -28,10 +28,10 @@ const useStyles = makeStyles({
 			letterSpacing: -0.29,
 			color: '#46475c',
 			marginTop: 0,
-			marginBottom: 15,
+			marginBottom: 8,
 		},
 		'& h2': {
-			fontSize: 14,
+			fontSize: 12,
 			marginBottom: 0,
 			fontWeight: 400,
 			fontStyle: 'normal',
@@ -44,51 +44,50 @@ const useStyles = makeStyles({
 	servicesAggregationDetailsWrapper: {
 		'& h3': {
 			margin: '2px 0px',
-			fontSize: 16,
+			fontSize: 12,
 		},
 		borderTop: '1px dashed #ccc',
 		marginTop: 5,
 		paddingTop: 5,
 	},
-	serviceName: {
-		display: 'inline-block',
-		fontSize: 12,
-		maxWidth: 200,
+	servicesAggregationDetails: {
+		'& div': {
+			fontSize: 11,
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'space-between',
+		},
 	},
-	servicePrice: {
+	serviceType: {
 		fontSize: 12,
-		float: 'right',
 	},
 	deviceProperties: {
-		marginTop: 10,
-		'& div': {
-			fontSize: 12,
-			'& b': {
-				fontSize: 14,
-			},
-		},
+		fontSize: 11,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
 	myCartTotalPrice: {
 		paddingTop: 5,
 		marginTop: 5,
 		borderTop: '1px solid #ccc',
 		'& span': {
-			fontSize: 14,
+			fontSize: 12,
 		},
 	},
 	noPayments: {
 		width: '100%',
-		margin: ' 10px 0px',
+		margin: ' 7px 0px',
 		padding: '10px 0px',
 		borderRadius: 10,
 		backgroundColor: '#5ddaed4d',
-		fontSize: 14,
+		fontSize: 12,
 		fontWeight: 400,
 		textAlign: 'center',
 		color: '#414141',
 	},
 	requestSummeryRowHeader: {
-		fontSize: 10,
+		fontSize: 11,
 		fontWeight: 500,
 		fontStyle: 'normal',
 		fontstretch: 'normal',
@@ -97,7 +96,7 @@ const useStyles = makeStyles({
 		color: '#000',
 	},
 	requestSummeryRowsContainer: {
-		fontSize: 12,
+		fontSize: 11,
 		fontWeight: 400,
 		fontStyle: 'normal',
 		fontStretch: 'normal',
@@ -108,14 +107,45 @@ const useStyles = makeStyles({
 	},
 });
 
-const DetailsComponent = ({ toggleDrawer, sizes, sizeIndex }) => {
+const SizeInnerBracket = ({ sizeId, bracket }) => {
+	const classes = useStyles();
+	let sizeBracket;
+	if (bracket.id === 4) {
+		sizeBracket = bracket.selecteds.find((ele) => ele.sizeId === sizeId);
+		if (!sizeBracket || !sizeBracket.selected) return '';
+		else
+			return (
+				<div className={classes.deviceProperties}>
+					<span className={classes.serviceName}>{bracket.name}</span>
+				</div>
+			);
+	} else {
+		sizeBracket = bracket.qtys.find((ele) => ele.sizeId === sizeId);
+		if (!sizeBracket || !sizeBracket.qty) return '';
+		else
+			return (
+				<div className={classes.deviceProperties}>
+					<span className={classes.serviceName}>
+						{bracket.name}&nbsp;
+						{'(' + sizeBracket.qty + ')'}
+					</span>
+					<span className={classes.servicePrice}>
+						{bracket.price * sizeBracket.qty}
+					</span>
+				</div>
+			);
+	}
+};
+
+const DetailsComponent = ({
+	toggleDrawer,
+	sizes,
+	brackets,
+	totalPrice,
+	addictionalPrice,
+}) => {
 	const classes = useStyles();
 	const selectedSizes = sizes.filter((size) => size.qty > 0);
-	// const sizeName = selectedSizes[sizeIndex].name;
-	// const sizeQty = selectedSizes[sizeIndex].qty;
-	// const sizePrice = selectedSizes[sizeIndex].price;
-	// const sizeId = selectedSizes[sizeIndex].id;
-	// const bracketsPrice = selectedSizes[sizeIndex].bracketsPrice;
 	return (
 		<div className={classes.fullList} role="presentation">
 			<Paper elevation={0} className={classes.detailPaper}>
@@ -128,7 +158,10 @@ const DetailsComponent = ({ toggleDrawer, sizes, sizeIndex }) => {
 						<b>TV Mounting</b>
 					</h2>
 					{selectedSizes.map((size) => (
-						<div className={classes.servicesAggregationDetailsWrapper}>
+						<div
+							className={classes.servicesAggregationDetailsWrapper}
+							key={size.id}
+						>
 							<h3>
 								<b>{size.name}</b>
 							</h3>
@@ -142,21 +175,32 @@ const DetailsComponent = ({ toggleDrawer, sizes, sizeIndex }) => {
 									</span>
 								</div>
 							</div>
-							<div className={classes.deviceProperties}>
+
+							<div>
 								<div>
-									<div>
-										<b>Braket Type</b>
-									</div>
-									<div>Full motion</div>
+									<b className={classes.serviceType}>Braket Type</b>
 								</div>
+								{brackets.map((bracket) => (
+									<SizeInnerBracket
+										sizeId={size.id}
+										bracket={bracket}
+										key={bracket.id}
+									/>
+								))}
 							</div>
 						</div>
 					))}
+					{addictionalPrice > 0 && (
+						<div className={classes.deviceProperties} style={{ marginTop: 7 }}>
+							<b className={classes.serviceType}>Addictional Service</b>
+							<span className={classes.servicePrice}>{addictionalPrice}</span>
+						</div>
+					)}
 					<div className={classes.myCartTotalPrice}>
 						<div>
 							<span>Total</span>
 							<span style={{ float: 'right' }}>
-								<b>$159</b>
+								<b>${totalPrice}</b>
 							</span>
 						</div>
 						<div className={classes.noPayments}>
@@ -184,7 +228,10 @@ const DetailsComponent = ({ toggleDrawer, sizes, sizeIndex }) => {
 
 const mapStateToProps = (state) => ({
 	sizes: state.step.sizes,
+	brackets: state.step.brackets,
+	totalPrice: state.step.totalPrice,
 	sizeIndex: state.step.sizeIndex,
+	addictionalPrice: state.step.addictionalPrice,
 });
 
 export default connect(mapStateToProps, {})(DetailsComponent);
