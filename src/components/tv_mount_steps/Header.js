@@ -10,10 +10,7 @@ const useStyles = makeStyles(() => ({
 		marginLeft: 10,
 		fontSize: 18,
 		'@media (max-width: 414px)': {
-			fontSize: 14,
-		},
-		'@media (max-width: 320px)': {
-			fontSize: 12,
+			fontSize: 13,
 		},
 	},
 	stepNo: {
@@ -24,10 +21,6 @@ const useStyles = makeStyles(() => ({
 		marginTop: 6,
 		'@media (max-width: 414px)': {
 			fontSize: '13px !important',
-			marginTop: 4,
-		},
-		'@media (max-width: 320px)': {
-			fontSize: '10px !important',
 			marginTop: 3,
 		},
 	},

@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 			color: '#22d1c3',
 		},
 		'@media (max-width: 414px)': {
-			fontSize: 8,
+			fontSize: 10,
 		},
 		'@media (max-height: 640px)': {
 			padding: 6,
@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const TimeComponent = ({ startTime, handleTime, timeIndex }) => {
+const TimeComponent = ({ startTime, handleTime, bookingTimes }) => {
 	const classes = useStyles();
 	const timeRange = startTime + '-' + (startTime + 2);
 	return (
@@ -41,12 +41,15 @@ const TimeComponent = ({ startTime, handleTime, timeIndex }) => {
 				className={classes.bookingTime}
 				onClick={(e) => handleTime(startTime)}
 				style={
-					startTime === timeIndex
+					bookingTimes.length > 0 && bookingTimes.includes(startTime)
 						? {
 								borderColor: '#22d1c3',
 								color: '#22d1c3',
 						  }
-						: {}
+						: {
+								borderColor: '#ebebeb',
+								color: '#030303',
+						  }
 				}
 			>
 				{timeRange}
@@ -56,7 +59,7 @@ const TimeComponent = ({ startTime, handleTime, timeIndex }) => {
 };
 
 const mapStateToProps = (state) => ({
-	timeIndex: state.step.timeIndex,
+	bookingTimes: state.step.bookingTimes,
 });
 
 export default connect(mapStateToProps, {})(TimeComponent);

@@ -3,19 +3,19 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import moment from 'moment';
-import { setDateIndex } from '../../redux/actions/actions';
+import { setCarouselIndex } from '../../redux/actions/actions';
 import { connect } from 'react-redux';
 
 const milisecPerDay = 24 * 60 * 60 * 1000;
 const dates = [0, 1, 2, 3, 4, 5];
 const today = new Date().getTime();
 
-const CarouselDateSelector = ({ dateIndex, setDateIndex }) => {
+const CarouselDateSelector = ({ dateIndex, setCarouselIndex }) => {
 	const handleDrag = (e) => {
 		let currentItem = e.item.index - 3;
 		if ([-3, 0, 6].includes(currentItem)) currentItem = 0;
 		else if ([-1, 5].includes(currentItem)) currentItem = 5;
-		setDateIndex(currentItem);
+		setCarouselIndex(currentItem);
 	};
 	return (
 		<div className="upcomming-event-section" style={{ width: '70%' }}>
@@ -54,4 +54,6 @@ const mapStateToProps = (state) => ({
 	dateIndex: state.step.dateIndex,
 });
 
-export default connect(mapStateToProps, { setDateIndex })(CarouselDateSelector);
+export default connect(mapStateToProps, { setCarouselIndex })(
+	CarouselDateSelector
+);

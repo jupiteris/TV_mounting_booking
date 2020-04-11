@@ -5,6 +5,9 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 import { connect } from 'react-redux';
 import {
 	setStep,
@@ -12,6 +15,7 @@ import {
 	setAddictionalPrice,
 	setBracketsPrice,
 	setTotalPrice,
+	resetDateAndTime,
 } from '../../redux/actions/actions';
 import DetailsComponent from './DetailsComponent';
 
@@ -97,6 +101,52 @@ const useStyles = makeStyles(() => ({
 			borderRadius: 20,
 		},
 	},
+	modal: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	paper: {
+		backgroundColor: 'white',
+		border: 0,
+		boxShadow: 5,
+		padding: '20px 10px',
+		width: '90%',
+		display: 'flex',
+		alignItems: 'center',
+		flexFlow: 'column',
+		justifyContent: 'center',
+		minHeight: 150,
+	},
+	note: {
+		display: 'flex',
+		alignItems: 'center',
+		fontSize: 12,
+		flexFlow: 'column',
+		fontWeight: 600,
+		'& span': {
+			lineHeight: 0.6,
+		},
+	},
+	btnDiv: {
+		marginTop: 30,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '90%',
+		'& button:nth-child(1)': {
+			fontSize: 12,
+			background: '#22d1c3',
+			color: 'white',
+			marginRight: 10,
+		},
+		'& button:nth-child(2)': {
+			fontSize: 12,
+			textDecoration: 'underline',
+			textDecorationColor: '#22d1c3',
+			marginLeft: 10,
+		},
+	},
 }));
 
 const Footer = ({
@@ -107,6 +157,7 @@ const Footer = ({
 	bracketsPrice,
 	totalPrice,
 	sizeIndex,
+	bookingTimes,
 	addictionalPrice,
 	addictionalQuizs,
 	setStep,
@@ -114,9 +165,12 @@ const Footer = ({
 	setBracketsPrice,
 	setAddictionalPrice,
 	setTotalPrice,
+	resetDateAndTime,
 }) => {
 	const classes = useStyles();
 	const [sizeLen, setSizeLen] = useState(0);
+	const [open, setOpen] = useState(false);
+	const [booked, setBooked] = useState(true);
 	useEffect(() => {
 		const selectedSizes = sizes.filter((size) => size.qty > 0);
 		//if step is 2
@@ -156,11 +210,23 @@ const Footer = ({
 		bracketsPrice,
 		addictionalPrice,
 	]);
-	const handleForward = () => {
+	const handleForward = (forward) => {
 		//if step is 2
 		if (currentStep === 1 && sizeIndex + 1 < sizeLen) {
 			setSizeIndex(sizeIndex + 1);
+		} else if (currentStep === 5 && !forward) {
+			if (!bookingTimes.length) {
+				console.log('here');
+				setBooked(false);
+				setOpen(true);
+			} else if (bookingTimes.length > 0 && bookingTimes.length < 3) {
+				setBooked(true);
+				setOpen(true);
+			} else {
+				setStep(currentStep + 1);
+			}
 		} else {
+			setOpen(false);
 			setStep(currentStep + 1);
 		}
 	};
@@ -172,6 +238,11 @@ const Footer = ({
 		} else {
 			setStep(currentStep - 1);
 		}
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+		resetDateAndTime();
 	};
 	const [drawerState, setDrawerState] = useState(false);
 	const toggleDrawer = (open) => (event) => {
@@ -223,12 +294,59 @@ const Footer = ({
 								<Button
 									variant="contained"
 									endIcon={<ArrowForwardIosIcon />}
-									onClick={handleForward}
+									onClick={(e) => handleForward(false)}
 									style={{ opacity: footerVisible ? 1 : 0.5 }}
 									disabled={!footerVisible}
 								>
 									{currentStep === 3 ? 'Skip' : 'Next Step'}
 								</Button>
+								<Modal
+									aria-labelledby="transition-modal-title"
+									aria-describedby="transition-modal-description"
+									className={classes.modal}
+									open={open}
+									closeAfterTransition
+									BackdropComponent={Backdrop}
+									BackdropProps={{
+										timeout: 500,
+									}}
+								>
+									<Fade in={open}>
+										<div className={classes.paper}>
+											<div className={classes.note}>
+												{booked ? (
+													<>
+														<span>We suggest selecting at least 3</span>
+														<br />
+														<span>
+															possible appointment start times for faster
+														</span>
+														<br />
+														<span>appointment confirmtion.</span>
+													</>
+												) : (
+													<span>Please select the booked Time</span>
+												)}
+											</div>
+											<div className={classes.btnDiv}>
+												{booked ? (
+													<>
+														<Button onClick={handleClose}>
+															Add more times
+														</Button>
+														<Button onClick={(e) => handleForward(true)}>
+															No, Thanks
+														</Button>
+													</>
+												) : (
+													<Button onClick={handleClose}>
+														Add Booking Time
+													</Button>
+												)}
+											</div>
+										</div>
+									</Fade>
+								</Modal>
 							</div>
 						</div>
 					</div>
@@ -266,6 +384,7 @@ const mapStateToProps = (state) => ({
 	addictionalQuizs: state.step.addictionalQuizs,
 	sizes: state.step.sizes,
 	sizeIndex: state.step.sizeIndex,
+	bookingTimes: state.step.bookingTimes,
 });
 
 export default connect(mapStateToProps, {
@@ -274,4 +393,5 @@ export default connect(mapStateToProps, {
 	setBracketsPrice,
 	setAddictionalPrice,
 	setTotalPrice,
+	resetDateAndTime,
 })(Footer);

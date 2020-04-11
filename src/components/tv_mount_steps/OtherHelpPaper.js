@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 	content: {
-		fontWeight: 500,
+		fontWeight: 600,
 		color: '#b7b7b7',
 		fontSize: 11,
 		padding: 10,

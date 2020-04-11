@@ -3,7 +3,7 @@ import TVMount from './pages/tv_mount_steps';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-// import Test from './pages/tv_mount_steps/step5';
+// import Test from './pages/tv_mount_steps/step7';
 
 function App() {
 	return (

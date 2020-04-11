@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
 import TimeComponent from './TimeComponent';
-import { setTimeIndex, setExpandMth } from '../../redux/actions/actions';
+import { setBookingTime, setExpandMth } from '../../redux/actions/actions';
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
@@ -44,7 +44,7 @@ const useStyles = makeStyles(() => ({
 		'@media (max-width: 414px)': {
 			width: '30%',
 			padding: '3px 0px !important',
-			fontSize: 7,
+			fontSize: 9,
 		},
 	},
 	line: {
@@ -62,7 +62,7 @@ const useStyles = makeStyles(() => ({
 			fontSize: 14,
 			fontWeight: 500,
 			'@media (max-width: 414px)': {
-				fontSize: 9,
+				fontSize: 12,
 			},
 			'@media (max-height: 640px)': {
 				padding: '10px 0px 5px 0px !important',
@@ -76,10 +76,10 @@ const useStyles = makeStyles(() => ({
 
 const times = [8, 10, 1, 3, 5, 7];
 
-const DatePaper = ({ expandMth, setTimeIndex, setExpandMth }) => {
+const DatePaper = ({ expandMth, setBookingTime, setExpandMth }) => {
 	const classes = useStyles();
 	const handleTime = (t) => {
-		setTimeIndex(t);
+		setBookingTime(t);
 	};
 	const handleExpandDates = () => {
 		setExpandMth(!expandMth);
@@ -121,6 +121,6 @@ const mapStateToProps = (state) => ({
 	expandMth: state.step.expandMth,
 });
 
-export default connect(mapStateToProps, { setTimeIndex, setExpandMth })(
+export default connect(mapStateToProps, { setBookingTime, setExpandMth })(
 	DatePaper
 );

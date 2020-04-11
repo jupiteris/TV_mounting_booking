@@ -14,9 +14,6 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		padding: '0px 10px',
 		marginTop: 30,
-		'@media (max-width: 414px)': {
-			fontSize: 8,
-		},
 		'@media (max-height: 640px)': {
 			marginTop: 15,
 		},

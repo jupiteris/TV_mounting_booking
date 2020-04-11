@@ -34,7 +34,7 @@ const useStyles = makeStyles(() => ({
 		fontSize: 14,
 		color: '#030303',
 		'@media (max-height: 670px)': {
-			fontSize: 10,
+			fontSize: 12,
 		},
 	},
 	qtyDiv: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
 		fontWeight: 1000,
 		fontSize: 16,
 		'@media (max-height: 670px)': {
-			fontSize: 12,
+			fontSize: 14,
 		},
 		'& button': {
 			padding: 0,
@@ -82,8 +82,9 @@ const useStyles = makeStyles(() => ({
 		'& div:nth-child(1)': {
 			width: '55%',
 			fontSize: 14,
+			fontWeight: 600,
 			'@media (max-width: 414px)': {
-				fontSize: 10,
+				fontSize: 9,
 			},
 		},
 		'& div:nth-child(2)': {

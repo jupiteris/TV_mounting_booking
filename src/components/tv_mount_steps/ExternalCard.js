@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		width: '64%',
 		fontSize: 14,
-		fontWeight: 430,
+		fontWeight: 600,
 		color: '#030303',
 		'& span': {
 			'@media (max-height: 640px)': {
@@ -51,7 +51,7 @@ const useStyles = makeStyles(() => ({
 			padding: 0,
 		},
 		'@media (max-width: 414px)': {
-			fontSize: 12,
+			fontSize: 14,
 			width: '40%',
 		},
 	},

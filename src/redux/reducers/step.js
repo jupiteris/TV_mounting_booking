@@ -9,12 +9,12 @@ import {
 	SET_SIZE_INDEX,
 	SET_BRACKETS_PRICE,
 	SET_ADDICTIONAL_PRICE,
-	SET_DATE_INDEX,
+	SET_CAROUSEL_INDEX,
 	SET_DATE_BLOCK_INDEX,
-	SET_TIME_INDEX,
 	SET_EXPAND_MTH,
 	SET_TOTAL_PRICE,
-	// SET_BOOKING_TIME,
+	SET_RESET_DATE_AND_TIME,
+	SET_BOOKING_TIME,
 } from '../actionTypes';
 
 const initialState = {
@@ -112,9 +112,8 @@ const initialState = {
 	addictionalPrice: 0,
 	totalPrice: 0,
 	footerVisible: false,
-	dateIndex: 0,
+	carouselIndex: 0,
 	dateBlockIndex: {},
-	timeIndex: 0,
 	expandMth: false,
 	bookingTimes: [],
 };
@@ -290,10 +289,10 @@ export default function (state = initialState, action) {
 				footerVisible: action.payload,
 			};
 		}
-		case SET_DATE_INDEX: {
+		case SET_CAROUSEL_INDEX: {
 			return {
 				...state,
-				dateIndex: action.payload,
+				carouselIndex: action.payload,
 			};
 		}
 		case SET_DATE_BLOCK_INDEX: {
@@ -302,16 +301,27 @@ export default function (state = initialState, action) {
 				dateBlockIndex: action.payload,
 			};
 		}
-		case SET_TIME_INDEX: {
+		case SET_RESET_DATE_AND_TIME: {
 			return {
 				...state,
-				timeIndex: action.payload,
+				carouselIndex: 0,
+				dateBlockIndex: {},
 			};
 		}
 		case SET_EXPAND_MTH: {
 			return {
 				...state,
 				expandMth: action.payload,
+			};
+		}
+		case SET_BOOKING_TIME: {
+			const index = state.bookingTimes.indexOf(action.payload);
+			return {
+				...state,
+				bookingTimes:
+					index === -1
+						? [...state.bookingTimes, action.payload]
+						: state.bookingTimes.filter((e) => e !== action.payload),
 			};
 		}
 		default:

@@ -9,12 +9,12 @@ import {
 	SET_SIZE_INDEX,
 	SET_ADDICTIONAL_PRICE,
 	SET_BRACKETS_PRICE,
-	SET_DATE_INDEX,
+	SET_CAROUSEL_INDEX,
 	SET_DATE_BLOCK_INDEX,
-	SET_TIME_INDEX,
 	SET_EXPAND_MTH,
 	SET_TOTAL_PRICE,
-	// SET_BOOKING_TIME,
+	SET_RESET_DATE_AND_TIME,
+	SET_BOOKING_TIME,
 } from '../actionTypes';
 
 export const setStep = (step) => async (dispatch) => {
@@ -97,9 +97,9 @@ export const setFooterVisible = (visible) => async (dispatch) => {
 	}
 };
 
-export const setDateIndex = (index) => async (dispatch) => {
+export const setCarouselIndex = (index) => async (dispatch) => {
 	try {
-		dispatch({ type: SET_DATE_INDEX, payload: index });
+		dispatch({ type: SET_CAROUSEL_INDEX, payload: index });
 	} catch (err) {
 		console.log(err);
 	}
@@ -108,14 +108,6 @@ export const setDateIndex = (index) => async (dispatch) => {
 export const setDateBlockIndex = (indexObj) => async (dispatch) => {
 	try {
 		dispatch({ type: SET_DATE_BLOCK_INDEX, payload: indexObj });
-	} catch (err) {
-		console.log(err);
-	}
-};
-
-export const setTimeIndex = (time) => async (dispatch) => {
-	try {
-		dispatch({ type: SET_TIME_INDEX, payload: time });
 	} catch (err) {
 		console.log(err);
 	}
@@ -136,10 +128,18 @@ export const setTotalPrice = (price) => async (dispatch) => {
 		console.log(err);
 	}
 };
-// export const setBookingTime = (time) => async (dispatch) => {
-// 	try {
-// 		dispatch({ type: SET_BOOKING_TIME, payload: visible });
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
-// };
+
+export const resetDateAndTime = () => async (dispatch) => {
+	try {
+		dispatch({ type: SET_RESET_DATE_AND_TIME });
+	} catch (err) {
+		console.log(err);
+	}
+};
+export const setBookingTime = (time) => async (dispatch) => {
+	try {
+		dispatch({ type: SET_BOOKING_TIME, payload: time });
+	} catch (err) {
+		console.log(err);
+	}
+};

@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
 		fontSize: 14,
 		color: '#030303',
 		'@media (max-height: 640px)': {
-			fontSize: 10,
+			fontSize: 12,
 		},
 	},
 	qtyDiv: {

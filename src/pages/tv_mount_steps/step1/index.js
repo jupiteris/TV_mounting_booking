@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 		fontWeight: 500,
 		'@media (max-height: 568px)': {
 			padding: '25px 20px 2px 20px',
-			fontSize: 8,
+			fontSize: 9,
 		},
 	},
 	nameSide: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles(() => ({
 		marginTop: 90,
 		'@media (max-height: 568px)': {
 			marginTop: 50,
-			fontSize: 12,
+			fontSize: 13,
 		},
 	},
 }));

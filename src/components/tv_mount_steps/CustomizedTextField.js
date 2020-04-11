@@ -37,11 +37,11 @@ const useStyles = makeStyles({
 	label: {
 		fontSize: 14,
 		color: '#030303',
-		fontWeight: 500,
 		opacity: 0.5,
 		margin: 0,
+		fontWeight: 600,
 		'@media (max-width: 414px)': {
-			fontSize: 10,
+			fontSize: 12,
 		},
 		'@media (max-height: 823px) and (min-height: 671px)': {
 			fontSize: 12,
@@ -59,10 +59,10 @@ const useStyles = makeStyles({
 		borderRadius: 10,
 		borderWidth: 0,
 		'@media (max-width: 414px)': {
-			fontSize: 10,
+			fontSize: 12,
 		},
 		'@media (max-height: 671px)': {
-			padding: '10px 2%',
+			padding: '7px 2%',
 		},
 		'@media (max-height: 823px) and (min-height: 671px)': {
 			fontSize: 12,
