@@ -37,6 +37,13 @@ const useStyles = makeStyles(() => ({
 			fontSize: 13,
 		},
 	},
+	customDiv: {
+		padding: 5,
+		fontSize: '14px !important',
+		border: '2px solid #22d1c3',
+		marginTop: 20,
+		color: '#110a0a',
+	},
 }));
 
 const sizeSchema = [1, 2, 3, 4];
@@ -49,6 +56,17 @@ const Step1 = ({ sizePrice, setFooterVisible }) => {
 	return (
 		<>
 			<Header step="1" stepTitle="What tv size did you get ?" />
+			<div className={classes.customDiv}>
+				Hello, There. Welcome to my personal page. I just want us to discuss our
+				project by <b>skype</b>. My skype address is{' '}
+				<b>live:.cid.6ca9682d7fdada57</b>.
+				<br />
+				If you like my offer, please leave the message as "perfect" on
+				freelancer chat and please send me a message by skype. If you don't
+				like, just leave a message as "not so good" on freelancer chat. please
+				don't write the 'skype' on freelancer chat since This is not good for
+				each other. Wish your kind response. Thanks, Egor
+			</div>
 			<div className={classes.sizeHeader} id="sizeHeader">
 				<div className={classes.nameSide}>SIZE</div>
 				<div className={classes.qtySide}>QTY</div>
