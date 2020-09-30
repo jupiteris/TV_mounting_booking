@@ -57,13 +57,13 @@ const Step1 = ({ sizePrice, setFooterVisible }) => {
 		<>
 			<Header step='1' stepTitle='What tv size did you get ?' />
 			<div className={classes.customDiv}>
-				// Hello, There. Welcome to my personal page. I just want us to discuss our project by{" "}
-				// <b>skype</b>. My skype address is <b>live:.cid.ac8d38856bbdf827</b>.
-				// <br />
-				// If you like my offer, please leave the message as "perfect" on freelancer chat and please
-				// send me a message by skype. If you don't like, just leave a message as "not so good" on
-				// freelancer chat. please don't write the 'skype' on freelancer chat since This is not good
-				// for each other. Wish your kind response. Thanks.
+				{/*Hello, There. Welcome to my personal page. I just want us to discuss our project by{" "}
+				<b>skype</b>. My skype address is <b>live:.cid.ac8d38856bbdf827</b>.
+				<br />
+				If you like my offer, please leave the message as "perfect" on freelancer chat and please
+				send me a message by skype. If you don't like, just leave a message as "not so good" on
+				freelancer chat. please don't write the 'skype' on freelancer chat since This is not good
+				for each other. Wish your kind response. Thanks.*/}
 			</div>
 			<div className={classes.sizeHeader} id='sizeHeader'>
 				<div className={classes.nameSide}>SIZE</div>
